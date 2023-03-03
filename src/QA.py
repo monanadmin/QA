@@ -127,7 +127,7 @@ if __name__ == '__main__':
    keywords = [ "abstract", "allocatable", "allocate", "assign", "associate", "asynchronous", "backspace,bind", 
                "block", "block data", "call", "case", "class", "close", "codimension", "common", "concurrent", 
                "contains", "contiguous", "continue", "critical", "cycle", "data", "deallocate", "deferred", 
-               "dimension", "do ", "elemental", "else", "elseif", "elsewhere", "end", "endfile", "endif", "entry", 
+               "dimension", "do", "elemental", "else", "elseif", "elsewhere", "end", "endfile", "endif", "entry", 
                "enum", "enumerator", "equivalence", "error", "exit", "extends", "external", "final", "flush", 
                "forall", "format", "function", "generic", "goto", "if", "implicit ", "import", "include ", "inquire", 
                "intent", "interface", "intrinsic", "lock", "memory", "module ", "namelist", "non_overridable", "nopass", 
@@ -227,6 +227,9 @@ if __name__ == '__main__':
                      if len(var_name)<2:
                         print("Rule 5.18 : short name : Linha",line_begin,var_name)
                         points = points + 0.5
+                     if var_name in keywords:
+                        print("Rule 4.7.1 : reserved : Linha",line_begin,var_name)
+                        points = points + 1.0
 
                      #Verifica se a variável é um argumento e se ela está com intent
                      if var_name in arguments:
