@@ -1,3 +1,4 @@
+# gerador de qualidade
 import xml.etree.ElementTree as ET
 #import open_fortran_parser
 
