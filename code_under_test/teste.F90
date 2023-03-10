@@ -20,12 +20,14 @@ subroutine tst_1(A1,x)
    !! ** Licence **: Under the terms of the GNU General Public version 3
    !!   <img src="https://www.gnu.org/graphics/gplv3-127x51.png width="63">
    !!
-   USE mpi
+   USE mpi;USE modCobvParGF
 
-   implicit none
+   implicit none ; character(len=*), parameter :: p_procedure_name = 'tst' 
    !Parameters:
-   character(len=*), parameter :: p_procedure_name = 'tst' 
-   !! subroutine name
+   
+   !!
+   
+   !subroutine name
 
    !Variables (input, output, inout)
    real, intent(in) :: A1(:)
@@ -36,9 +38,7 @@ subroutine tst_1(A1,x)
 
    !Code:
 
-   open(unit=23, file="teste.txt",status="new",action="write")
-
-   write(23,*) "teste"
+   open(unit=23, file="teste.txt",status="new",action="write");  write(23,*) "teste"
 
    do i=1,x
       A1(i)= A1(i) * 2.0
@@ -72,6 +72,7 @@ subroutine tst_1(A1,x)
 
 end subroutine tst_1
 
+
 subroutine ifx(b_teste)
    !! ## teste
    !!
@@ -98,7 +99,12 @@ subroutine ifx(b_teste)
    IMPLICIT NONE
    !Parameters:
    character(len=*), parameter :: procedureName = 'xxx' 
+   
    !! subroutine name
+   
+   real,  parameter :: g = 9.8 
+
+   !! constante geométrica pi
 
    !Variables (input, output, inout)
    real, intent(in) :: b_teste
@@ -115,3 +121,7 @@ subroutine ifx(b_teste)
    nome = "Luiz"
 
 end subroutine ifx
+
+module test
+   
+end module
