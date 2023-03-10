@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 import xml.etree.ElementTree as ET
 #import open_fortran_parser
 
@@ -57,7 +58,7 @@ def is_upper_snake_case(word):
 if __name__ == '__main__':
 
    # read the files and get fields
-   tree = ET.parse('./xml/saida.xml')
+   tree = ET.parse('../xml/saida.xml')
    root = tree.getroot() # Pega a raiz do xml
 
    for file in root.iter("file"): #Pega o nome e caminho do arquivo fonte
