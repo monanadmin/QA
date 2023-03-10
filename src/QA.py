@@ -125,7 +125,7 @@ def switch (key):
    elif  key == "end subroutine":
             ky = ""
             key_stmt = "end-subroutine"
-            str_keyword= "keyword1" #end
+            str_keyword= "keyword1"
             #str_keyword= "keyword2" #subroutine
    else:
             ky = key
@@ -161,8 +161,7 @@ def keywords_in_line(root, keywords, points):
        if count_words >= 2:
           if kwd_line not in lines_summary:
              lines_summary.append(kwd_line)
-   #          print("Saidas linhas", count_words, kwd_base) 
-             print("Rule 4.20 : keywords  linha: ", kwd_line)
+             print("Rule 4.20 : keywords > 2  linha: ", kwd_line)
              points = points + 1.0
    return(points)
  
@@ -197,7 +196,7 @@ if __name__ == '__main__':
    comments = {}
    #line = []
    #begin = []
-   #text_comment = []  #duas strings iniciais doscomentarios
+   #text_comment = []  #duas strings iniciais dos comentarios
 
    # Cria um dicionário com a posição de comentários
    #for com in root.iter("comment"):
@@ -335,7 +334,7 @@ if __name__ == '__main__':
                   lines_with_parameter.append(atp.get("line_begin"))
                   #atp.get("line_begin")) +1  # linha seguinte ao parametro
                   if (int(atp.get("line_begin")) +1)  not in comments.get("line"): 
-                     print("Rule 4.11,2/12.2: Need insert commnents at line:", int(atp.get("line_begin"))+1)
+                     print("Rule 4.11.2/12.2: Need insert commnents at line:", int(atp.get("line_begin"))+1)
                      points = points + 1
                   elif "!!" not in comments.get("txt_comment")[comments.get("line").index(int(atp.get("line_begin"))+1) ]:
                      print("Rule 4.11.2/12.2: Need insert commnents with at line (!!):", (int(atp.get("line_begin"))+1) )
