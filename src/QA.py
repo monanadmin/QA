@@ -165,19 +165,45 @@ def keywords_in_line(root, keywords, points):
              points = points + 1.0
    return(points)
  
- 
-def search_variables (sub):
+def search_variables (sub, points):
    used_variables={}
    line = []
    col = []
    txt_key = []
-   for var in sub.iter("variables"):
-      line.append(int(var.get("line_begin")))
-      col.append(int(var.get("col_begin")))
-      txt_key.append(var.get("name"))
-   used_variables.update({"line":line, "col_begin":col, "keyword":txt_key})
-   return(used_variables)
-               
+
+   for var in sub.iter("variable"):
+      if var.get("name") != None:
+         line.append(int(var.get("line_begin")))
+         col.append(int(var.get("col_begin")))
+         txt_key.append(var.get("name"))
+         if var.get("name").islower() == False: 
+            print('Rule XXX : Case variables : line',var.get("line_begin"), 'col_begin:', var.get("col_begin"), 'variable: ',var.get("name") )
+            points = points + 1
+   
+   used_variables.update({"line":line, "col_begin":col, "variable":txt_key})     
+   dict_variables_points = {}
+   dict_variables_points.update({"UV":used_variables, "P":points})
+   return(points)
+
+def verifica_col_end (sub, points):
+   line = []
+   col = []
+   key_tree = ["comment","statement", "declaration" ]
+   
+   for verif in key_tree :
+      for col_count in sub.iter(verif):       
+         if int(col_count.get("col_end")) >= 80 and int(col_count.get("col_end")) < 132:
+            col.append(int(col_count.get("col_end")))    
+            print('Rule XX- : Col >= 80 <132: line',col_count.get("line_begin") )
+            points = points + 1 
+         if int(col_count.get("col_end")) >= 132:
+            col.append(int(col_count.get("col_end")))
+            print('Rule XX- : Col > 132: line',col_count.get("line_begin") )
+            points = points + 0.5   
+   return(points)
+          
+          
+#---------------------------------------------------------------------------------------------               
 if __name__ == '__main__':
 
    # read the files and get fields
@@ -267,25 +293,30 @@ if __name__ == '__main__':
                "where", "while", "write" ]
    
    #Tabelas de palavras reservadas não-aceitas
-   not_keywords = [ "enddo", "endif", "goto" ]
+   not_keywords = [ "enddo", "endif", "goto", "pause", "equivalence","common", "save", "data", "double precision", "stop" ]
    
    #Inicio do processo com a análise das subrotinas
    #Percorre a árvore para as declarações de subrotina
+
+   
    for sub in root.iter("subroutine"):
       print("\n\nInspecionando a subrotina",sub.get("name"))
       print("---------------------------------------------------------")
       print("subroutine lines = ",int(sub.get("line_end"))-int(sub.get("line_begin")))
       print("---------------------------------------------------------")      
-
+      
       points = 0.0
       p_proc_name = FALSE
       p_src_name = FALSE
       points = case_keywords(sub,keywords,points)
-       
       
+      #refatorar
+      points = search_variables (sub, points) 
+       
       points = keywords_in_line(sub, keywords, points)
-            
-            
+      
+      points = verifica_col_end(sub, points)
+                       
       #Verifica a primeira Rule de nome
       if not is_camel_case(sub.get("name")): #4.8 camelCase
          print("Rule 4.8 : camelCase : Linhas",sub.get("line_begin"), sub.get("line_end"))
