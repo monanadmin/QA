@@ -155,24 +155,32 @@ def keywords_in_line(root, keywords, points):
        if count_words >= 2:
           if kwd_line not in lines_summary:
              lines_summary.append(kwd_line)
-             print("Rule 4.20 : keywords > 2  linha: ", kwd_line)
+             print("Rule 4.20 : keywords > 2 linha: ", kwd_line)
              points = points + 1.0
    return(points)
  
-def search_variables (sub, points):
+def search_variables (sub, points, keywords, not_keywords, name_list):
    used_variables={}
    line = []
    col = []
    txt_key = []
+
 
    for var in sub.iter("variable"):
       if var.get("name") != None:
          line.append(int(var.get("line_begin")))
          col.append(int(var.get("col_begin")))
          txt_key.append(var.get("name"))
-         if var.get("name").islower() == False: 
-            print('Rule 4.: Case variables : line',var.get("line_begin"), 'col_begin:', var.get("col_begin"), 'variable: ',var.get("name") )
-            points = points + 1
+         if not is_snake_case(var.get("name")) and var.get("name") not in name_list:
+               print('Rule 4.7: Case variables : line',var.get("line_begin"), 'col_begin:', var.get("col_begin"), 'variable: ',var.get("name") )
+               points = points + 1.0
+         if var.get("name") in keywords:
+            print("Rule 4.71 : keyword : Linha",var.get("line_begin"),var.get("name"))
+            points = points + 1.0
+         if var.get("name") in not_keywords:
+            print("Rule 4.71 : not_keyword : Linha",var.get("line_begin"),var.get("name"))
+            points = points + 1.0
+         
    
    used_variables.update({"line":line, "col_begin":col, "variable":txt_key})     
    dict_variables_points = {}
@@ -300,6 +308,9 @@ if __name__ == '__main__':
    #Tabelas de palavras reservadas não-aceitas
    not_keywords = [ "enddo", "endif", "goto", "pause", "equivalence","common", "save", "data", "double precision", "stop" ]
 
+   #variáveis em namelist
+   name_list = {"a_Teste"}
+
    #Inicio do processo com a análise das subrotinas
    #Percorre a árvore para as declarações de subrotina
 
@@ -316,7 +327,7 @@ if __name__ == '__main__':
       points = case_keywords(sub,keywords,points)
       
       #refatorar
-      points = search_variables (sub, points) 
+      points = search_variables (sub, points, keywords, not_keywords) 
        
       points = keywords_in_line(sub, keywords, points)
       
@@ -348,6 +359,13 @@ if __name__ == '__main__':
                if not is_snake_case(arg.get("name")): #4.7 snake_case
                   print("Rule 4.7 : snake_case : Linha",arg.get("line_begin"),arg.get("name"))
                   points = points + 1.0
+               if arg.get("name") in keywords:
+                  print("Rule 4.71 : keyword : Linha",arg.get("line_begin"),arg.get("name"))
+                  points = points + 1.0
+               if arg.get("name") in not_keywords:
+                  print("Rule 4.71 : not_keyword : Linha",arg.get("line_begin"),arg.get("name"))
+                  points = points + 1.0
+               
       
       #Inspeciona o corpo da subrotina
       has_implicit = False
