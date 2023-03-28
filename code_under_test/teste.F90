@@ -19,9 +19,9 @@ subroutine tst_1(A1,x)
    !! --- 
    !! ** Licence **: Under the terms of the GNU General Public version 3
    !!   <img src="https://www.gnu.org/graphics/gplv3-127x51.png width="63">
-   !!
+   !!--------------------------------------------------------------------------------------------
 !teste para tamanho de linha -------------------------------------------------------------------------------------------------------
-   USE mpi;USE modCobvParGF
+   USE mpi;USE modCobvParGF !!------------------------------------------------------------------------------------------------------
 
    implicit none ; character(len=*), parameter :: p_procedure_name = 'tst' 
    !Parameters:
