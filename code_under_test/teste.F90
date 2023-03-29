@@ -116,7 +116,12 @@ subroutine ifx(b_teste)
 
    character(len=20) :: nome
 
+   namelist /TESTE/ name, NAME_UPPER, Name_first_upper 
+
    !Code:
+   name = "lower name"
+   NAME_UPPER = "KLCLAUDIO"
+
    a_Teste = 3.45
 
    a_teste= b_teste
