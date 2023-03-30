@@ -18,6 +18,7 @@ def is_pascal_case(word):
            return False
    return True
 
+
 def is_camel_case(word):
    if not word:
        return False
@@ -29,6 +30,7 @@ def is_camel_case(word):
        if not char.isalpha() and not char.isdigit():
            return False
    return True#
+
 
 def is_snake_case(word):
    if not word:
@@ -43,6 +45,7 @@ def is_snake_case(word):
            return False
    return True#
 
+
 def is_upper_snake_case(word):
    if not word:
        return False
@@ -55,6 +58,7 @@ def is_upper_snake_case(word):
        if char.islower():
            return False
    return True#
+
 
 def search_comments(root):
    comments = {}
@@ -70,6 +74,7 @@ def search_comments(root):
    comments.update({"line":line,"col_begin":begin,"txt_comment":text_comment})
    return comments
 
+
 def search_keywords(root,keywords):
    used_keywords={}
    line = []
@@ -77,14 +82,15 @@ def search_keywords(root,keywords):
    txt_key = []
        
    for key in keywords:
-      [ky, key_stmt, str_keyword] = switch(key)
-      for stmt in root.iter(key_stmt+"-stmt"):
-         line.append(int(stmt.get("line_begin")))
-         col.append(int(stmt.get("col_begin")))
-         txt_key.append(stmt.get(ky + str_keyword))
-         
+      if key != None:
+         [ky, key_stmt, str_keyword] = switch(key)
+         for stmt in root.iter(key_stmt+"-stmt"):
+            line.append(int(stmt.get("line_begin")))
+            col.append(int(stmt.get("col_begin")))
+            txt_key.append(stmt.get(ky + str_keyword))
    used_keywords.update({"line":line, "col_begin":col, "keyword":txt_key})
    return used_keywords
+
 
 def switch (key):
    if key == "goto":
@@ -130,19 +136,23 @@ def switch (key):
             str_keyword = "Keyword"  
    return([ky, key_stmt, str_keyword])
 
+
 def case_keywords(root,keywords,points):       
    used_keywords = search_keywords(root,keywords)
 
    for kwd in used_keywords.get("keyword"):
-      if kwd.isupper():
-         line_kwd = element_dictionary(used_keywords,"keyword", "line", kwd)
-         print ("Rule 4.5 : keyword Case", kwd, ", line ", line_kwd)
-         points = points + 1.0
+      if kwd != None:
+         if kwd.isupper():
+            line_kwd = element_dictionary(used_keywords,"keyword", "line", kwd)
+            print ("Rule 4.5 : keyword Case", kwd, ", line ", line_kwd)
+            points = points + 1.0
    return(points)         
+ 
  
 def element_dictionary(dictionary,name_col_base, name_col, element):
    element_dict =  dictionary.get(name_col)[dictionary.get(name_col_base).index(element)]
    return (element_dict)      
+  
   
 def keywords_in_line(root, keywords, points):
    used_keywords = search_keywords(root,keywords)
@@ -159,12 +169,12 @@ def keywords_in_line(root, keywords, points):
              points = points + 1.0
    return(points)
  
+ 
 def search_variables (sub, points, keywords, not_keywords, name_list):
    used_variables={}
    line = []
    col = []
    txt_key = []
-
 
    for var in sub.iter("variable"):
       if var.get("name") != None:
@@ -175,17 +185,41 @@ def search_variables (sub, points, keywords, not_keywords, name_list):
                print('Rule 4.7: Case variables : line',var.get("line_begin"), 'col_begin:', var.get("col_begin"), 'variable: ',var.get("name") )
                points = points + 1.0
          if var.get("name") in keywords:
-            print("Rule 4.71 : keyword : Linha",var.get("line_begin"),var.get("name"))
+            print("Rule 4.71 : keyword : Linha", var.get("line_begin"), var.get("name"))
             points = points + 1.0
          if var.get("name") in not_keywords:
-            print("Rule 4.71 : not_keyword : Linha",var.get("line_begin"),var.get("name"))
+            print("Rule 4.71 : keyword  : Linha", var.get("line_begin"), var.get("name"))
             points = points + 1.0
          
-   
+   ''
    used_variables.update({"line":line, "col_begin":col, "variable":txt_key})     
    dict_variables_points = {}
    dict_variables_points.update({"UV":used_variables, "P":points})
    return(points)
+
+
+def search_namelist (sub, points):
+   name_list = {}
+   line = []
+   col = []
+   id = []
+
+   for nam in sub.iter("namelist-group-object"):
+      line.append(int(nam.get("line_begin")))
+      col.append(int(nam.get("col_begin")))
+      id.append(nam.get("id"))
+      if not nam.get("id").isupper() :
+         print('Rule 4.18: Case namelist : line',nam.get("line_begin"), 'col_begin:', nam.get("col_begin"), 'id: ', nam.get("id") )
+         points = points + 1.0
+                 
+   
+   name_list.update({"line":line, "col_begin":col, "id":id})     
+   dict_name_list_points = {}
+   dict_name_list_points.update({"name":name_list, "P":points})
+   
+   # print("NAMELIST:", name_list)
+   return(points)
+
 
 def verifica_col_end (sub, points):
    #line = []
@@ -206,6 +240,7 @@ def verifica_col_end (sub, points):
                points = points + 0.5   
 
    return(points)
+
 
 def not_keyword_test(not_keywords, word): 
    #regra 4.53   
@@ -327,11 +362,13 @@ if __name__ == '__main__':
       points = case_keywords(sub,keywords,points)
       
       #refatorar
-      points = search_variables (sub, points, keywords, not_keywords) 
+      points = search_variables (sub, points, keywords, not_keywords,name_list) 
        
       points = keywords_in_line(sub, keywords, points)
       
       points = verifica_col_end(sub, points)
+      
+      points = search_namelist (sub, points)
 
       #print (not_keyword_test(not_keywords, "enddo"))
 
