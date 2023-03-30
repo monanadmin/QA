@@ -13,6 +13,7 @@ def is_pascal_case(word):
        return False
    if word[1].isupper():
        return False
+    
    for char in word[2:]:
        if not char.isalpha() and not char.isdigit():
            return False
@@ -26,6 +27,7 @@ def is_camel_case(word):
        return False
    if word[0].isupper():
        return False
+    
    for char in word[1:]:
        if not char.isalpha() and not char.isdigit():
            return False
@@ -37,8 +39,9 @@ def is_snake_case(word):
        return False
    if not word[0].isalpha():
        return False
+    
    for char in word[0:]:
-       if not char.isalpha() and not char.isdigit() and not char=="_":
+       if not char.isalpha() and not char.isdigit() and not char == "_":
            return False
    for char in word[0:]:
        if char.isupper():
@@ -51,8 +54,9 @@ def is_upper_snake_case(word):
        return False
    if not word[0].isalpha():
        return False
+    
    for char in word[0:]:
-       if not char.isalpha() and not char.isdigit() and not char=="_":
+       if not char.isalpha() and not char.isdigit() and not char == "_":
            return False
    for char in word[0:]:
        if char.islower():
@@ -105,7 +109,7 @@ def switch (key):
             ky = "end-if"
             key_stmt = key
             str_keyword = "Keyword"
-   elif  key ==  "if":
+   elif  key == "if":
             ky = "if"
             key_stmt = "if-then"
             str_keyword = "Keyword"
@@ -188,7 +192,7 @@ def search_variables (sub, points, keywords, not_keywords, name_list):
             print("Rule 4.71 : keyword : Linha", var.get("line_begin"), var.get("name"))
             points = points + 1.0
          if var.get("name") in not_keywords:
-            print("Rule 4.71 : keyword  : Linha", var.get("line_begin"), var.get("name"))
+            print("Rule 4.71 : keyword : Linha", var.get("line_begin"), var.get("name"))
             points = points + 1.0
          
    ''
@@ -226,8 +230,7 @@ def verifica_col_end (sub, points):
    col = []
    key_tree = ["comment", "statement", "declaration" ]
    
-   for verif in key_tree :
-     
+   for verif in key_tree : 
       for col_count in sub.iter(verif):   
          if col_count.get("col_end") != None:
             if int(col_count.get("col_end")) >= 80 and int(col_count.get("col_end")) < 132:
@@ -248,10 +251,10 @@ def not_keyword_test(not_keywords, word):
       print("Alterar para key word valida:", word)
       return(True)
    else :
-      return(False)
-   
-          
-             
+      return(False)    
+
+        
+#------------------------------------------------------------------------------           
 if __name__ == '__main__':
 
    # read the files and get fields
@@ -349,8 +352,6 @@ if __name__ == '__main__':
 
    #Inicio do processo com a análise das subrotinas
    #Percorre a árvore para as declarações de subrotina
-
-   
    for sub in root.iter("subroutine"):
       print("\n\nInspecionando a subrotina", sub.get("name"))
       print("---------------------------------------------------------")
@@ -360,22 +361,13 @@ if __name__ == '__main__':
       points = 0.0
       p_proc_name = FALSE
       p_src_name = FALSE
+      
       points = case_keywords(sub, keywords, points)
-      
-      #refatorar
       points = search_namelist(sub, points) #recuperar namelist para search_variables
-      
       points = search_variables(sub, points, keywords, not_keywords, name_list) 
-       
       points = keywords_in_line(sub, keywords, points)
-      
       points = verifica_col_end(sub, points)
-      
-      
-
-      #print (not_keyword_test(not_keywords, "enddo"))
-
-                       
+                        
       #Verifica a primeira Rule de nome
       if not is_camel_case(sub.get("name")): #4.8 camelCase
          print("Rule 4.8 : camelCase : Linhas", sub.get("line_begin"), sub.get("line_end"))
@@ -406,7 +398,6 @@ if __name__ == '__main__':
                   print("Rule 4.71 : not_keyword : Linha", arg.get("line_begin"), arg.get("name"))
                   points = points + 1.0
                
-      
       #Inspeciona o corpo da subrotina
       has_implicit = False
       has_use = False
@@ -420,7 +411,7 @@ if __name__ == '__main__':
                for ist in dec.iter("implicit-stmt"): 
                   has_implicit = True #Informa que a declaração de implicit foi encontrada
                   #Verifica a Rule de implicit none obrigatório
-                  if not ist.get("implicitKeyword")=="implicit" and not ist.get("noneKeyword")=="none": #4.28- sem implicit
+                  if not ist.get("implicitKeyword") == "implicit" and not ist.get("noneKeyword") == "none": #4.28- sem implicit
                      print("Rule 4.28 : no implicit : Linhas", spc.get("line_begin"), spc.get("line_end"))
                      points = points + 0.5
 
@@ -431,13 +422,13 @@ if __name__ == '__main__':
                   lines_with_parameter.append(atp.get("line_begin"))
                   #atp.get("line_begin")) + 1  # linha seguinte ao parametro
                   if (int(atp.get("line_begin")) + 1)  not in comments.get("line"): 
-                     print("Rule 4.11.2/12.2: Need insert commnents at line:", int(atp.get("line_begin")) + 1)
+                     print("Rule 4.11.2/12.2 : Need insert commnents at line:", int(atp.get("line_begin")) + 1)
                      points = points + 1
                   elif "!!" not in comments.get("txt_comment")[comments.get("line").index(int(atp.get("line_begin")) + 1) ]:
-                     print("Rule 4.11.2/12.2: Need insert commnents with at line (!!):", (int(atp.get("line_begin")) + 1) )
+                     print("Rule 4.11.2/12.2 : Need insert commnents with at line (!!):", (int(atp.get("line_begin")) + 1) )
                      points = points + 1
                   elif len(comments.get("txt_comment")[comments.get("line").index(int(atp.get("line_begin")) + 1) ].strip())  <= 2:
-                      print("Rule 4.11.2/12.2: Need insert parameter full commnents at line (!!):", int(atp.get("line_begin")) + 1)
+                      print("Rule 4.11.2/12.2 : Need insert parameter full commnents at line (!!):", int(atp.get("line_begin")) + 1)
                       points = points + 1
                   
                for itt in dec.iter("intent"):
@@ -559,12 +550,15 @@ if __name__ == '__main__':
                points = points + 1
                
       if p_proc_name == FALSE:
-         print ("Rule 4.17 variable procedure : subroutine", sub.get("name"))    # line
+         print ("Rule 4.17 : variable procedure : subroutine", sub.get("name"))    # line
          points = points + 1     
       if p_src_name == FALSE:
-         print ("Rule 4.17 variable source : ", file_name)  # line   
+         print ("Rule 4.17 : variable source : ", file_name)  # line   
          points = points + 1
             
+      print("Penalties in subroutine: ", points)           
+
+#------------------------------------------------------------------------------
 
 #<type-declaration-stmt col_begin="68" col_end="69" eos="&#10;" line_begin="96" line_end="96" numAttributes="1" rule="501"/>
 #<use-stmt col_begin="3" col_end="168" eos="&#10;" hasModuleNature="false" hasOnly="true" hasRenameList="false" id="modGate" line_begin="57" line_end="57" onlyKeyword="only" rule="1109" useKeyword="use"/>
@@ -591,4 +585,3 @@ if __name__ == '__main__':
 #<open-stmt col_begin="3" col_end="63" eos="&#10;" line_begin="39" line_end="39" openKeyword="open" rule="904"/>
 #<close-stmt closeKeyword="close" col_begin="3" col_end="18" eos="&#10;" line_begin="43" line_end="43" rule="908"/>
 #<write-stmt col_begin="3" col_end="23" eos="&#10;" hasOutputItemList="true" line_begin="41" line_end="41" rule="911" writeKeyword="write"/>
-      print("Penalties in subroutine: ", points)
