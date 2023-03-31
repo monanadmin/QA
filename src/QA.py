@@ -31,7 +31,7 @@ def is_camel_case(word):
    for char in word[1:]:
        if not char.isalpha() and not char.isdigit():
            return False
-   return True#
+   return True
 
 
 def is_snake_case(word):
@@ -46,7 +46,7 @@ def is_snake_case(word):
    for char in word[0:]:
        if char.isupper():
            return False
-   return True#
+   return True
 
 
 def is_upper_snake_case(word):
@@ -61,7 +61,7 @@ def is_upper_snake_case(word):
    for char in word[0:]:
        if char.islower():
            return False
-   return True#
+   return True
 
 
 def search_comments(root):
@@ -138,7 +138,7 @@ def switch (key):
             ky = key
             key_stmt = key
             str_keyword = "Keyword"  
-   return([ky, key_stmt, str_keyword])
+   return [ky, key_stmt, str_keyword]
 
 
 def case_keywords(root, keywords, points):       
@@ -150,12 +150,12 @@ def case_keywords(root, keywords, points):
             line_kwd = element_dictionary(used_keywords, "keyword", "line", kwd)
             print ("Rule 4.5 : keyword Case", kwd, ", line ", line_kwd)
             points = points + 1.0
-   return(points)         
+   return points         
  
  
 def element_dictionary(dictionary, name_col_base, name_col, element):
    element_dict =  dictionary.get(name_col)[dictionary.get(name_col_base).index(element)]
-   return (element_dict)      
+   return element_dict     
   
   
 def keywords_in_line(root, keywords, points):
@@ -171,7 +171,7 @@ def keywords_in_line(root, keywords, points):
              lines_summary.append(kwd_line)
              print("Rule 4.20 : keywords > 2 linha: ", kwd_line)
              points = points + 1.0
-   return(points)
+   return points
  
  
 def search_variables (sub, points, keywords, not_keywords, name_list):
@@ -186,20 +186,19 @@ def search_variables (sub, points, keywords, not_keywords, name_list):
          col.append(int(var.get("col_begin")))
          txt_key.append(var.get("name"))
          if not is_snake_case(var.get("name")) and var.get("name") not in name_list:
-               print('Rule 4.7: Case variables : line', var.get("line_begin"), 'col_begin:', var.get("col_begin"), 'variable: ', var.get("name") )
+               print('Rule 4.7: case variables : line', var.get("line_begin"), 'col_begin:', var.get("col_begin"), 'variable: ', var.get("name") )
                points = points + 1.0
          if var.get("name") in keywords:
-            print("Rule 4.71 : keyword : Linha", var.get("line_begin"), var.get("name"))
+            print("Rule 4.71 : variable keyword : Linha", var.get("line_begin"), var.get("name"))
             points = points + 1.0
          if var.get("name") in not_keywords:
-            print("Rule 4.71 : keyword : Linha", var.get("line_begin"), var.get("name"))
+            print("Rule 4.71 : variable keyword : Linha", var.get("line_begin"), var.get("name"))
             points = points + 1.0
          
-   ''
    used_variables.update({"line":line, "col_begin":col, "variable":txt_key})     
    dict_variables_points = {}
    dict_variables_points.update({"UV":used_variables, "P":points})
-   return(points)
+   return points
 
 
 def search_namelist (sub, points):
@@ -213,7 +212,7 @@ def search_namelist (sub, points):
       col.append(int(nam.get("col_begin")))
       id.append(nam.get("id"))
       if not nam.get("id").isupper() :
-         print('Rule 4.18: Case namelist : line', nam.get("line_begin"), 'col_begin:', nam.get("col_begin"), 'id: ', nam.get("id") )
+         print('Rule 4.18 : case namelist : line', nam.get("line_begin"), 'col_begin:', nam.get("col_begin"), 'id: ', nam.get("id") )
          points = points + 1.0
                  
    
@@ -222,7 +221,7 @@ def search_namelist (sub, points):
    dict_name_list_points.update({"name":name_list, "P":points})
    
    # print("NAMELIST:", name_list)
-   return(points)
+   return points
 
 
 def verifica_col_end (sub, points):
@@ -235,14 +234,13 @@ def verifica_col_end (sub, points):
          if col_count.get("col_end") != None:
             if int(col_count.get("col_end")) >= 80 and int(col_count.get("col_end")) < 132:
                col.append(int(col_count.get("col_end")))    
-               print('Rule 4.21 - : Col >= 80 <132: line', col_count.get("line_begin") )
+               print('Rule 4.21 : size col >= 80 <132: line', col_count.get("line_begin") )
                points = points + 1 
             elif int(col_count.get("col_end")) >= 132:
                col.append(int(col_count.get("col_end")))
-               print('Rule 4.21.1 - : Col > 132: line', col_count.get("line_begin") )
+               print('Rule 4.21.1 : size col > 132: line', col_count.get("line_begin") )
                points = points + 0.5   
-
-   return(points)
+   return points
 
 
 def not_keyword_test(not_keywords, word): 
@@ -451,7 +449,7 @@ if __name__ == '__main__':
                      if var.get("hasInitialValue") == "true":
                         # E se ela não está em uma linha de parameter aplica a Rule 4.30
                         if not line_begin in lines_with_parameter:
-                           print("Rule 4.30 : Initialized : Linhas", line_begin, line_end, var_name)
+                           print("Rule 4.30 : initialized : Linhas", line_begin, line_end, var_name)
                            points = points + 1.0
 #                        else #Ela está em uma linha de parameter verificar se o nome está adequado 4.12.1
 #                           if var_name[0:2] != "p_" and var_name[0:2] != "c_":
@@ -546,17 +544,17 @@ if __name__ == '__main__':
                continue
             source_keyword = line_normal[pos:pos + len(res)]
             if res != source_keyword:
-               print("Rule 4.5 : keyword Case : Linha", i)
+               print("Rule 4.5 : keyword case : Linha", i)
                points = points + 1
                
       if p_proc_name == FALSE:
          print ("Rule 4.17 : variable procedure : subroutine", sub.get("name"))    # line
          points = points + 1     
       if p_src_name == FALSE:
-         print ("Rule 4.17 : variable source : ", file_name)  # line   
+         print ("Rule 4.17 : variable source :", file_name)  # line   
          points = points + 1
             
-      print("Penalties in subroutine: ", points)           
+      print("Penalties in subroutine :", points)           
 
 #------------------------------------------------------------------------------
 
