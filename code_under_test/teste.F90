@@ -100,9 +100,8 @@ subroutine ifx(b_teste)
 
    IMPLICIT NONE
    !Parameters: 
-   character(len=*), parameter :: procedureName = 'xxx' 
-   
-   !! subroutine name
+   character(len=*), parameter :: procedureName = 'xxx'
+   !! subroutine name ------->>>>>>inicio dos erros nas linhas -> 105
    
    real,  parameter :: g = 9.8 
 
@@ -112,15 +111,18 @@ subroutine ifx(b_teste)
    real, intent(in) :: b_teste
 
    !Local variables:
-   real :: a_Teste = 23 !teste
+   real :: a_Teste = 23 !teste xml ->> 115
 
    character(len=20) :: nome
 
-   namelist /TESTE/ name, NAME_UPPER, Name_first_upper 
+   character(len=20) :: name_lw, NAME_UPPER, Name_first_upper
+   !namelist /TESTE/ name_lw, NAME_UPPER, Name_first_upper
 
-   !Code:
-   name = "lower name"
-   NAME_UPPER = "KLCLAUDIO"
+   !Code:  ->> 121
+   name_lw = "lower name"
+   !NAME_UPPER = "KLCLAUDIO"
+   !Name_first_upper = "Klclaudio"
+   !write(6,TESTE)
 
    a_Teste = 3.45
 
