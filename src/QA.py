@@ -1,6 +1,6 @@
 #-*- coding: utf-8-*-
 # para gerar o arquivo xml:
-# python3 -m open_fortran_parser ../teste.F90 ../xml/saida.xml
+# python3 -m open_fortran_parser ../code_under_test/teste.F90 ../xml/saida.xml
 #
 from operator import truediv
 from pickle import FALSE, TRUE
@@ -92,58 +92,66 @@ def search_keywords(root, keywords):
        
    for key in keywords:
       if key != None:
-         [ky, key_stmt, str_keyword] = switch(key)
+         [str_keyword_prefix, key_stmt, str_keyword] = switch(key)
          for stmt in root.iter(key_stmt + "-stmt"):
             line.append(int(stmt.get("line_begin")))
             col.append(int(stmt.get("col_begin")))
-            txt_key.append(stmt.get(ky + str_keyword))
+            txt_key.append(stmt.get(str_keyword_prefix + str_keyword))
    used_keywords.update({"line":line, "col_begin":col, "keyword":txt_key})
    return used_keywords
 
 
 def switch (key):
    if key == "goto":
-            ky = "go"
+            str_keyword_prefix = "go"
             key_stmt = key
             str_keyword = "Keyword"
    elif  key == "subroutine":
-            ky = ""
+            str_keyword_prefix = ""
             key_stmt = key
             str_keyword= "keyword"
-   elif  key == "end if":
-            ky = "end-if"
-            key_stmt = key
-            str_keyword = "Keyword"
    elif  key == "if":
-            ky = "if"
+            str_keyword_prefix = "if"
             key_stmt = "if-then"
             str_keyword = "Keyword"
+   elif  key == "end if":
+            str_keyword_prefix = "end"
+            key_stmt = key
+            str_keyword = "Keyword"
+   elif  key == "endif":
+            str_keyword_prefix = ["if","end"]
+            key_stmt = key
+            str_keyword = "Keyword"
    elif  key == "select":
-            ky = key
+            str_keyword_prefix = key
             key_stmt = "select-case"
             str_keyword = "Keyword"            
    elif  key == "end select":
-            ky = "end"
+            str_keyword_prefix = "end"
             key_stmt = "end-select"
             str_keyword = "Keyword"
    elif  key == "end module":
-            ky = "end"
+            str_keyword_prefix = "end"
             key_stmt = "end-module"
             str_keyword = "Keyword"
    elif  key == "end do":
             key_stmt = "end-do"
-            ky = "do"
-            str_keyword = "Keyword"     
+            str_keyword_prefix = "end"
+            str_keyword = "Keyword"
+   elif  key == "enddo":
+            key_stmt = "end-do"
+            str_keyword_prefix = ["do", "end"]
+            str_keyword = "Keyword"
    elif  key == "end subroutine":
-            ky = ""
+            str_keyword_prefix = ""
             key_stmt = "end-subroutine"
             str_keyword = "keyword1"
             #str_keyword = "keyword2" #subroutine
    else:
-            ky = key
             key_stmt = key
+            str_keyword_prefix = key
             str_keyword = "Keyword"  
-   return [ky, key_stmt, str_keyword]
+   return [str_keyword_prefix, key_stmt, str_keyword]
 
 
 def case_keywords(root, keywords, points):       
