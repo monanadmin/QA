@@ -44,13 +44,17 @@ subroutine tst_1(A1,x)
 
    do i=1,x
       A1(i)= A1(i) * 2.0
+      do j=1,x
+         A2(j)= A1(j) * 2.0
+      enddo   
    end do
 
    IF(x==30) then
       A1(30) = 145.7
    else 
       goto 30
-   end if 
+   endif 
+   
 30 continue
    if(x>6) then
       ift = 7

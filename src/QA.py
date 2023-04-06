@@ -1,6 +1,6 @@
 #-*- coding: utf-8-*-
 # para gerar o arquivo xml:
-# python3 -m open_fortran_parser ../code_under_test/teste.F90 ../xml/saida.xml
+# python3 -m open_fortran_parser ../teste.F90 ../xml/saida.xml
 #
 from operator import truediv
 from pickle import FALSE, TRUE
@@ -155,6 +155,7 @@ def case_keywords(root, keywords, points):
             line_kwd = element_dictionary(used_keywords, "keyword", "line", kwd)
             print ("Rule 4.5 : keyword Case", kwd, ", line ", line_kwd)
             points = points + 1.0
+        
    return points         
  
  
@@ -211,6 +212,20 @@ def case_keyword_variables(sub, points, keywords, not_keywords, name_list):
          print("Rule 4.71 : variable keyword : line", line_var, var)
          points = points + 1.0
    return points
+
+
+#------> endif endif
+def verify_colapsed_keywords(sub, points,keywords):       
+   
+   for kwd in used_keywords.get("keyword"):
+      if kwd != None:
+         print (kwd)    
+         if kwd == "enddo" or kwd == "endif":
+            line_kwd = element_dictionary(used_keywords, "keyword", "line", kwd)
+            print ("Rule 4.26 : collapsed form", kwd, ", line ", line_kwd)
+            points = points + 1.0
+   return points
+
 
 #------->> fazer teste
 def search_namelist(sub):
@@ -336,8 +351,8 @@ if __name__ == '__main__':
                 "call", "case", "class", "close", "codimension", "common",
                 "concurrent","contains", "contiguous", "continue", "critical",
                 "cycle", "data", "deallocate", "deferred", "dimension", "do", 
-                "elemental", "else", "elseif", "elsewhere", "end", "enddo", 
-                "end do", "endfile", "endif", "end if", "end module", 
+                "elemental", "else", "elseif", "elsewhere", "end", 
+                "end do", "endfile", "end if", "end module", 
                 "end select", "end subroutine", "entry", "enum", "enumerator",
                 "equivalence", "error", "exit", "extends", "external", "final",
                 "flush", "forall", "format", "function", "generic", "goto", 
@@ -368,7 +383,7 @@ if __name__ == '__main__':
       p_proc_name = FALSE
       p_src_name = FALSE
       name_list= search_namelist(sub)
-      
+      used_keywords = search_keywords(sub, keywords)
       
       points = case_keywords(sub, keywords, points)
       points = verify_name_list(points, name_list) 
@@ -376,6 +391,7 @@ if __name__ == '__main__':
                                       not_keywords, name_list["id"]) 
       points = keywords_in_line(sub, keywords, points)
       points = verify_col_end(sub, points)
+      points = verify_colapsed_keywords(sub,points,used_keywords)
                         
       #Verifica a primeira Rule de nome
       if not is_camel_case(sub.get("name")): #4.8 camelCase
