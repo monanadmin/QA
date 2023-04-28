@@ -1,7 +1,8 @@
 #-*- coding: utf-8-*-
-# para gerar o arquivo xml:
+# Para gerar arquivo xml referente ao arquivo teste.F90:
+# cd  src
 # python3 -m open_fortran_parser ../code_under_test/teste.F90 ../xml/saida.xml
-#
+# 
 from operator import truediv
 from pickle import FALSE, TRUE
 import xml.etree.ElementTree as ET
@@ -67,24 +68,22 @@ def is_upper_snake_case(word):
    return True
 
 
-def search_comments(root):
+def search_comments(sub):
    comments = {}
    line = []
    begin = []
    text_comment = []  
-   
-#----->>>>> verificar linhas 
+
    # Cria um dicionário com a posição de comentários
-   for com in root.iter("comment"):
+   for com in sub.iter("comment"):
       line.append(int(com.get("line_begin")))
       begin.append(int(com.get("col_begin")))
-      text_comment.append(com.get("text")) # adiciona a string dos comentarios
+      text_comment.append(com.get("text")) # adiciona a string dos comentários
    comments.update({"line":line, "col_begin":begin, "txt_comment":text_comment})
-   #print(comments.get("line"))
    return comments
 
 
-def search_keywords(root, keywords):
+def search_keywords(sub, keywords):
    used_keywords={}
    line = []
    col = []
@@ -93,10 +92,15 @@ def search_keywords(root, keywords):
    for key in keywords:
       if key != None:
          [str_keyword_prefix, key_stmt, str_keyword] = switch(key)
-         for stmt in root.iter(key_stmt + "-stmt"):
+         for stmt in sub.iter(key_stmt + "-stmt"):
             line.append(int(stmt.get("line_begin")))
             col.append(int(stmt.get("col_begin")))
             txt_key.append(stmt.get(str_keyword_prefix + str_keyword))
+#            print("UsedKeys:", stmt.get(str_keyword_prefix + str_keyword),"line:",stmt.get("line_begin"))
+#            if stmt.get(str_keyword_prefix + str_keyword) == "enddo" or stmt.get(str_keyword_prefix + str_keyword) == "endif":
+#               print ("Rule 4.26 : collapsed form", stmt.get(str_keyword_prefix + str_keyword) , ", line ", stmt.get("line_begin"))
+               #points = points + 1.0
+   
    used_keywords.update({"line":line, "col_begin":col, "keyword":txt_key})
    return used_keywords
 
@@ -116,12 +120,12 @@ def switch (key):
             str_keyword = "Keyword"
    elif  key == "end if":
             str_keyword_prefix = "end"
-            key_stmt = key
+            key_stmt = "end-if"
             str_keyword = "Keyword"
-   elif  key == "endif":
-            str_keyword_prefix = ["if","end"]
-            key_stmt = key
-            str_keyword = "Keyword"
+   #elif  key == "endif":
+   #         str_keyword_prefix = "end"
+   #         key_stmt = "end-if"
+   #         str_keyword = "Keyword"
    elif  key == "select":
             str_keyword_prefix = key
             key_stmt = "select-case"
@@ -140,7 +144,7 @@ def switch (key):
             str_keyword = "Keyword"
    elif  key == "enddo":
             key_stmt = "end-do"
-            str_keyword_prefix = ["do", "end"]
+            str_keyword_prefix = "end"
             str_keyword = "Keyword"
    elif  key == "end subroutine":
             str_keyword_prefix = ""
@@ -154,16 +158,15 @@ def switch (key):
    return [str_keyword_prefix, key_stmt, str_keyword]
 
 
-def case_keywords(root, keywords, points):       
-   used_keywords = search_keywords(root, keywords)
+def case_keywords(sub, keywords, points):       
+   used_keywords = search_keywords(sub, keywords)
 
    for kwd in used_keywords.get("keyword"):
       if kwd != None:
          if kwd.isupper():
             line_kwd = element_dictionary(used_keywords, "keyword", "line", kwd)
             print ("Rule 4.5 : keyword Case", kwd, ", line ", line_kwd)
-            points = points + 1.0
-        
+            points = points + 1.0    
    return points         
  
  
@@ -172,8 +175,8 @@ def element_dictionary(dictionary, name_col_base, name_col, element):
    return element_dict     
   
   
-def keywords_in_line(root, keywords, points):
-   used_keywords = search_keywords(root, keywords)
+def keywords_in_line(sub, keywords, points):
+   used_keywords = search_keywords(sub, keywords)
    lines_base = used_keywords.get("line")  
    lines_summary=[]
 
@@ -203,6 +206,7 @@ def search_variables(sub):
    used_variables.update({"line":line, "col_begin":col, "name":txt_key})     
    return used_variables
 
+
 def case_keyword_variables(sub, points, keywords, not_keywords, name_list):
    used_variables = search_variables (sub)
   
@@ -219,19 +223,6 @@ def case_keyword_variables(sub, points, keywords, not_keywords, name_list):
       if var in not_keywords:
          print("Rule 4.71 : variable keyword : line", line_var, var)
          points = points + 1.0
-   return points
-
-
-#------> endif endif
-def verify_colapsed_keywords(sub, points,keywords):       
-   
-   for kwd in used_keywords.get("keyword"):
-      if kwd != None:
-         print (kwd)    
-         if kwd == "enddo" or kwd == "endif":
-            line_kwd = element_dictionary(used_keywords, "keyword", "line", kwd)
-            print ("Rule 4.26 : collapsed form", kwd, ", line ", line_kwd)
-            points = points + 1.0
    return points
 
 
@@ -277,7 +268,21 @@ def verify_col_end(sub, points):
                points = points + 0.5   
    return points
 
+
+def verify_colapsed_keywords(points, used_keywords):         
+   k = 0
+
+   for kwd in used_keywords.get("keyword"):   
+      if kwd != None:
+         if kwd == "enddo" or kwd == "endif":
+            print ("Rule 4.26 : collapsed form", kwd, ", line : ", 
+                   used_keywords["line"][k] )
+            points = points + 1.0 
+      k = k + 1
+      # uso do contador evita erro na numeração das linhas qdo há chaves repetidas
+   return points
        
+
 #------------------------------------------------------------------------------           
 if __name__ == '__main__':
 
@@ -288,7 +293,7 @@ if __name__ == '__main__':
    for file in root.iter("file"): #Pega o nome e caminho do arquivo fonte
       file_name = file.get("path")
    
-   #Abre e lê o arquivo fonte
+   # Abre e lê o arquivo fonte
    fn = open(file_name, "r")
    lines = fn.readlines()
    lines_work = []
@@ -335,31 +340,31 @@ if __name__ == '__main__':
       except:
          c_lines_work.append(lines_work[line])
          continue
-      #Copia a parte que está fora dos literais
+      # Copia a parte que está fora dos literais
       new_line = lines_work[line][0:c_comments.get("col_begin")[ndx] + 1] \
                  + lines_work[line][c_comments.get("col_end")[ndx]-1:]
       c_lines_work.append(new_line)
 
-   #Cria um dicionário com as linhas de atribuição
+   # Cria um dicionário com as linhas de atribuição
    assignments = {}
    a_line = []
    a_begin = []
    a_end = []
 
-   #Cria uma lista com todas as linhas que tem atribuição
+   # Cria uma lista com todas as linhas que tem atribuição
    for assig in root.iter("assignment"):
       a_line.append(int(assig.get("line_begin")))
       a_begin.append(int(assig.get("col_begin")))
       a_end.append(int(assig.get("col_end")))
    assignments.update({"line":a_line, "col_begin":a_begin, "col_end":a_end})
 
-   #Tabela de palavras reservadas
+   # Tabela de palavras reservadas
    keywords = [ "abstract", "allocatable", "allocate", "assign", "associate",
                 "asynchronous", "backspace, bind", "block", "block data", 
                 "call", "case", "class", "close", "codimension", "common",
                 "concurrent","contains", "contiguous", "continue", "critical",
                 "cycle", "data", "deallocate", "deferred", "dimension", "do", 
-                "elemental", "else", "elseif", "elsewhere", "end", 
+                "elemental", "else", "elseif", "elsewhere", "end","endif",  
                 "end do", "endfile", "end if", "end module", 
                 "end select", "end subroutine", "entry", "enum", "enumerator",
                 "equivalence", "error", "exit", "extends", "external", "final",
@@ -375,12 +380,12 @@ if __name__ == '__main__':
                 "unlock", "use", "value", "volatile", "wait", "where", "while", 
                 "write" ]
    
-   #Tabelas de palavras reservadas não-aceitas
+   # Tabelas de palavras reservadas não-aceitas
    not_keywords = [ "enddo", "endif", "goto", "pause", "equivalence","common",
                    "save", "data", "double precision","stop" ]
    
-   #Inicio do processo com a análise das subrotinas
-   #Percorre a árvore para as declarações de subrotina
+   # Inicio do processo com a análise das subrotinas
+   # Percorre a árvore para as declarações de subrotina
    for sub in root.iter("subroutine"):
       print("\n\nInspecionando a subrotina", sub.get("name"))
       print("---------------------------------------------------------")
@@ -399,9 +404,9 @@ if __name__ == '__main__':
                                       not_keywords, name_list["id"]) 
       points = keywords_in_line(sub, keywords, points)
       points = verify_col_end(sub, points)
-      points = verify_colapsed_keywords(sub,points,used_keywords)
+      points = verify_colapsed_keywords(points,used_keywords)
                         
-      #Verifica a primeira Rule de nome
+      # Verifica a primeira Rule de nome
       if not is_camel_case(sub.get("name")): #4.8 camelCase
          print("Rule 4.8 : camelCase : lines", \
                 sub.get("line_begin"), sub.get("line_end"))
@@ -409,11 +414,11 @@ if __name__ == '__main__':
 
       arguments = []
       intent_list = []
-      #Inspeciona o header da subrotina
+      # Inspeciona o header da subrotina
       for elem in sub.iter("header"):
-         #Inspeciona os argumentos de chamada
+         # Inspeciona os argumentos de chamada
          for args in elem.iter("arguments"):
-            #Inspeciona o nome dos argumentos dentro das Rules
+            # Inspeciona o nome dos argumentos dentro das Rules
             for arg in args.iter("argument"):
                if type(arg.get("name")) != str: #Previne da leitura de não strings
                   continue
@@ -421,7 +426,7 @@ if __name__ == '__main__':
                # Preenche a lista de argumentos de chamada da subrotina
                arguments.append(arg.get("name"))
 
-               #Verifica a Rule de nome de variável e a Rule de nomes curtos
+               # Verifica a Rule de nome de variável e a Rule de nomes curtos
                if not is_snake_case(arg.get("name")): #4.7 snake_case
                   print("Rule 4.7 : snake_case : line", \
                          arg.get("line_begin"), arg.get("name"))
@@ -435,7 +440,7 @@ if __name__ == '__main__':
                          arg.get("line_begin"), arg.get("name"))
                   points = points + 1.0
                
-      #Inspeciona o corpo da subrotina
+      # Inspeciona o corpo da subrotina
       has_implicit = False
       has_use = False
       has_only = False
@@ -444,18 +449,18 @@ if __name__ == '__main__':
          for spc in elem.iter("specification"):
             for dec in spc.iter("declaration"):
 
-               #Verificação da declaração de implicit
+               # Verificação da declaração de implicit
                for ist in dec.iter("implicit-stmt"): 
                   has_implicit = True #Informa que a declaração de implicit foi encontrada
-                  #Verifica a Rule de implicit none obrigatório
+                  # Verifica a Rule de implicit none obrigatório
                   if not ist.get("implicitKeyword") == "implicit" \
                      and not ist.get("noneKeyword") == "none": #4.28- sem implicit
                      print("Rule 4.28 : no implicit : lines", \
                             spc.get("line_begin"), spc.get("line_end"))
                      points = points + 0.5
 
-               #Verifica quais linhas com delacaração de parameter
-               #Guarda na lista lines_with_parameter
+               # Verifica quais linhas com delacaração de parameter
+               # Guarda na lista lines_with_parameter
                
                lines_with_parameter = []
                for atp in dec.iter("attribute-parameter"):
@@ -487,11 +492,11 @@ if __name__ == '__main__':
                   for var in vars.iter("variable"):
                      if type(var.get("name")) != str: #Previne da leitura de não strings
                         continue
-                     #Dados da variável: nome, linha
+                     # Dados da variável: nome, linha
                      var_name = var.get("name")
                      line_begin = var.get("line_begin")
                      line_end = var.get("line_end")
-                     # Se a variavel é inicializada
+                     # Se a variável é inicializada
                      if var.get("hasInitialValue") == "true":
                         # E se ela não está em uma line de parameter aplica a Rule 4.30
                         if not line_begin in lines_with_parameter:
@@ -502,7 +507,7 @@ if __name__ == '__main__':
 #                              print(var_name[0:2])
 #                              print("Rule 4.12 : no prefix : Linhas", line_begin, line_end, var_name)
 #                              points = points + 1.0
-                     #Verifica a Rule de nome de variável e a Rule de nomes curtos
+                     # Verifica a Rule de nome de variável e a Rule de nomes curtos
                      if not is_snake_case(var_name): #4.7 snake_case
                         print("Rule 4.7 : snake_case : line", int(line_begin), var_name)
                         points = points + 1.0
@@ -510,13 +515,13 @@ if __name__ == '__main__':
                         print("Rule 5.18 : short name : line", int(line_begin), var_name)
                         points = points + 0.5
 
-                     #Verifica se a variável é um argumento e se ela está com intent
+                     # Verifica se a variável é um argumento e se ela está com intent
                      if var_name in arguments:
                         if not line_begin in intent_list:
                            print("Rule 4.10 : intent : line", line_begin, var_name)
                            points = points + 1.0
 
-                     #Verifica a declaração para verificar se ela é assumed-shape
+                     # Verifica a declaração para verificar se ela é assumed-shape
                      for dis in var.iter("dimensions"):
                         for dim in dis.iter("dimension"):
                            if not dim.get("type") == "assumed-shape" and var_name in arguments:
@@ -546,7 +551,7 @@ if __name__ == '__main__':
                print("Rule 5.40 : if size : ", if_size, "line", line_begin, line_end)
                points = points + 0.5
 
-         #Verificação de use em subrotinas
+         # Verificação de use em subrotinas
          for use in spc.iter("use"):
             has_use = True
             for onl in use.iter("only"):
@@ -568,7 +573,7 @@ if __name__ == '__main__':
 
       for i in range(int(sub.get("line_begin")), int(sub.get("line_end"))):
          # Verifica a Rule de espaços nas atribuições dentro da subrotina
-         #Procura por um espaço na linha do código
+         # Procura por um espaço na linha do código
          try:
             ndx = assignments.get("line").index(i)
          except:
@@ -577,7 +582,7 @@ if __name__ == '__main__':
          sub_linha = c_lines_work[i - 1][assignments.get("col_begin")[ndx]:assignments.get("col_end")[ndx]]
          pos = sub_linha.find("=")
          if(pos >-1):
-            #Verifica se tem espaço antes e depois quando for uma atribuição
+            # Verifica se tem espaço antes e depois quando for uma atribuição
             if sub_linha[pos-1] != " " or sub_linha[pos + 1] != " ":
                print("Rule 4.58 : no space : line", i, c_lines_work[i - 1])
                points = points + 1.0
