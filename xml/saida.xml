@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <ofp version="0.8.5-1">
-  <file col_begin="0" col_end="11" line_begin="1" line_end="140" path="/home/klclaudio/Documents/Monan/CodeReview/QA/src/../code_under_test/teste.F90">
-    <start-of-file filename="../code_under_test/teste.F90" path="/home/klclaudio/Documents/Monan/CodeReview/QA/src/../code_under_test/teste.F90" rule="-2"/>
-    <subroutine col_begin="0" col_end="21" line_begin="1" line_end="79" name="tst_1">
+  <file col_begin="0" col_end="11" line_begin="1" line_end="144" path="/home/kclaudio/Documents/Monan/CodeReview/QA/src/../code_under_test/teste.F90">
+    <start-of-file filename="../code_under_test/teste.F90" path="/home/kclaudio/Documents/Monan/CodeReview/QA/src/../code_under_test/teste.F90" rule="-2"/>
+    <subroutine col_begin="0" col_end="21" line_begin="1" line_end="83" name="tst_1">
       <header col_begin="0" col_end="23" line_begin="1" line_end="1">
         <subroutine-stmt__begin addendum="begin" rule="1232"/>
         <arguments col_begin="17" col_end="21" count="2" line_begin="1" line_end="1">
@@ -17,7 +17,7 @@
         </arguments>
         <subroutine-stmt col_begin="0" col_end="23" eos="&#10;" hasArgSpecifier="true" hasBindingSpec="false" hasDummyArgList="true" hasPrefix="false" keyword="subroutine" line_begin="1" line_end="1" name="tst_1" rule="1232"/>
       </header>
-      <body col_begin="3" col_end="18" line_begin="2" line_end="77">
+      <body col_begin="3" col_end="18" line_begin="2" line_end="81">
         <comment col_begin="3" col_end="14" line_begin="2" line_end="2" text="!! ## brief"/>
         <comment col_begin="3" col_end="5" line_begin="3" line_end="3" text="!!"/>
         <comment col_begin="3" col_end="19" line_begin="4" line_end="4" text="!! Author: autor"/>
@@ -261,7 +261,7 @@
           </write>
           <action-stmt rule="214"/>
         </statement>
-        <loop col_begin="3" col_end="10" line_begin="45" line_end="50" type="do">
+        <loop col_begin="3" col_end="9" line_begin="45" line_end="50" type="do">
           <executable-construct rule="213"/>
           <execution-part-construct rule="209"/>
           <header col_begin="6" col_end="11" line_begin="45" line_end="45">
@@ -458,7 +458,7 @@
             </statement>
             <block rule="801"/>
           </body>
-          <end-do-stmt col_begin="3" col_end="10" doKeyword="do" endKeyword="end" eos="&#10;" id="" line_begin="50" line_end="50" rule="834"/>
+          <end-do-stmt col_begin="3" col_end="9" doKeyword="" endKeyword="enddo" eos="&#10;" id="" line_begin="50" line_end="50" rule="834"/>
           <end-do rule="833"/>
           <block-do-construct rule="826"/>
           <do-construct rule="825"/>
@@ -545,57 +545,127 @@
           <end-if-stmt col_begin="3" col_end="10" endKeyword="endif" eos="&#10;" id="" ifKeyword="" line_begin="56" line_end="56" rule="806"/>
           <if-construct rule="802"/>
         </if>
-        <statement col_begin="0" col_end="18" line_begin="58" line_end="77">
+        <if col_begin="3" col_end="9" line_begin="58" line_end="60">
+          <header col_begin="6" col_end="11" line_begin="58" line_end="58">
+            <executable-construct rule="213"/>
+            <execution-part-construct rule="209"/>
+            <operation col_begin="6" col_end="11" line_begin="58" line_end="58" type="multiary">
+              <operand col_begin="6" col_end="7" line_begin="58" line_end="58">
+                <name col_begin="6" col_end="7" hasSubscripts="false" id="x" line_begin="58" line_end="58" type="ambiguous">
+                  <part-ref col_begin="6" col_end="7" hasImageSelector="false" hasSectionSubscriptList="false" id="x" line_begin="58" line_end="58" rule="613"/>
+                  <data-ref numPartRef="1" rule="612"/>
+                  <designator-or-func-ref rule="-3"/>
+                  <primary rule="701"/>
+                </name>
+              </operand>
+              <operator col_begin="7" col_end="9" line_begin="58" line_end="58" operator="==">
+                <rel-op rule="713"/>
+              </operator>
+              <operand col_begin="9" col_end="11" line_begin="58" line_end="58">
+                <literal col_begin="9" col_end="11" line_begin="58" line_end="58" type="int" value="45">
+                  <int-literal-constant col_begin="9" col_end="11" digitString="45" kindParam="" line_begin="58" line_end="58" rule="406"/>
+                  <literal-constant rule="306"/>
+                  <primary rule="701"/>
+                </literal>
+              </operand>
+              <level-3-expr col_begin="7" col_end="9" line_begin="58" line_end="58" relOp="==" rule="710"/>
+            </operation>
+          </header>
+          <if-then-stmt col_begin="3" col_end="18" eos="&#10;" id="" ifKeyword="if" line_begin="58" line_end="58" rule="803" thenKeyword="then"/>
+          <body col_begin="6" col_end="20" line_begin="59" line_end="59">
+            <statement col_begin="6" col_end="20" line_begin="59" line_end="59">
+              <assignment col_begin="6" col_end="20" line_begin="59" line_end="59">
+                <target col_begin="6" col_end="11" line_begin="59" line_end="59">
+                  <name col_begin="6" col_end="11" hasSubscripts="true" id="A1" line_begin="59" line_end="59" type="variable">
+                    <subscripts col_begin="9" col_end="11" count="1" line_begin="59" line_end="59">
+                      <section-subscript-list__begin addendum="list-begin" rule="619"/>
+                      <subscript col_begin="9" col_end="11" line_begin="59" line_end="59" type="simple">
+                        <literal col_begin="9" col_end="11" line_begin="59" line_end="59" type="int" value="15">
+                          <int-literal-constant col_begin="9" col_end="11" digitString="15" kindParam="" line_begin="59" line_end="59" rule="406"/>
+                          <literal-constant rule="306"/>
+                          <primary rule="701"/>
+                        </literal>
+                        <section-subscript hasLowerBound="true" hasStride="false" hasUpperBound="false" isAmbiguous="true" rule="619"/>
+                      </subscript>
+                      <section-subscript-list addendum="list" count="1" rule="619"/>
+                    </subscripts>
+                    <part-ref col_begin="6" col_end="8" hasImageSelector="false" hasSectionSubscriptList="true" id="A1" line_begin="59" line_end="59" rule="613"/>
+                    <data-ref numPartRef="1" rule="612"/>
+                    <designator hasSubstringRange="false" rule="603"/>
+                    <variable rule="601"/>
+                  </name>
+                </target>
+                <value col_begin="15" col_end="20" line_begin="59" line_end="59">
+                  <literal col_begin="15" col_end="20" line_begin="59" line_end="59" type="real" value="145.0">
+                    <real-literal-constant col_begin="15" col_end="20" kindParam="" line_begin="59" line_end="59" realConstant="145.0" rule="417"/>
+                    <literal-constant rule="306"/>
+                    <primary rule="701"/>
+                  </literal>
+                </value>
+                <assignment-stmt rule="734"/>
+              </assignment>
+              <action-stmt rule="214"/>
+            </statement>
+            <statement>
+              <executable-construct rule="213"/>
+              <execution-part-construct rule="209"/>
+            </statement>
+            <block rule="801"/>
+          </body>
+          <end-if-stmt col_begin="3" col_end="9" endKeyword="endif" eos="&#10;" id="" ifKeyword="" line_begin="60" line_end="60" rule="806"/>
+          <if-construct rule="802"/>
+        </if>
+        <statement col_begin="0" col_end="18" line_begin="62" line_end="81">
           <executable-construct rule="213"/>
           <execution-part-construct rule="209"/>
-          <statement col_begin="0" col_end="12" line_begin="58" line_end="58">
-            <continue col_begin="0" col_end="12" line_begin="58" line_end="58">
-              <label col_begin="0" col_end="2" lbl="30" line_begin="58" line_end="58" rule="313"/>
-              <continue-stmt col_begin="0" col_end="12" continueKeyword="continue" eos="&#10;" label="30" line_begin="58" line_end="58" rule="848"/>
+          <statement col_begin="0" col_end="12" line_begin="62" line_end="62">
+            <continue col_begin="0" col_end="12" line_begin="62" line_end="62">
+              <label col_begin="0" col_end="2" lbl="30" line_begin="62" line_end="62" rule="313"/>
+              <continue-stmt col_begin="0" col_end="12" continueKeyword="continue" eos="&#10;" label="30" line_begin="62" line_end="62" rule="848"/>
             </continue>
             <action-stmt rule="214"/>
           </statement>
-          <if col_begin="3" col_end="10" line_begin="59" line_end="64">
-            <header col_begin="6" col_end="9" line_begin="59" line_end="59">
+          <if col_begin="3" col_end="10" line_begin="63" line_end="68">
+            <header col_begin="6" col_end="9" line_begin="63" line_end="63">
               <executable-construct rule="213"/>
               <execution-part-construct rule="209"/>
-              <operation col_begin="6" col_end="9" line_begin="59" line_end="59" type="multiary">
-                <operand col_begin="6" col_end="7" line_begin="59" line_end="59">
-                  <name col_begin="6" col_end="7" hasSubscripts="false" id="x" line_begin="59" line_end="59" type="ambiguous">
-                    <part-ref col_begin="6" col_end="7" hasImageSelector="false" hasSectionSubscriptList="false" id="x" line_begin="59" line_end="59" rule="613"/>
+              <operation col_begin="6" col_end="9" line_begin="63" line_end="63" type="multiary">
+                <operand col_begin="6" col_end="7" line_begin="63" line_end="63">
+                  <name col_begin="6" col_end="7" hasSubscripts="false" id="x" line_begin="63" line_end="63" type="ambiguous">
+                    <part-ref col_begin="6" col_end="7" hasImageSelector="false" hasSectionSubscriptList="false" id="x" line_begin="63" line_end="63" rule="613"/>
                     <data-ref numPartRef="1" rule="612"/>
                     <designator-or-func-ref rule="-3"/>
                     <primary rule="701"/>
                   </name>
                 </operand>
-                <operator col_begin="7" col_end="8" line_begin="59" line_end="59" operator="&gt;">
+                <operator col_begin="7" col_end="8" line_begin="63" line_end="63" operator="&gt;">
                   <rel-op rule="713"/>
                 </operator>
-                <operand col_begin="8" col_end="9" line_begin="59" line_end="59">
-                  <literal col_begin="8" col_end="9" line_begin="59" line_end="59" type="int" value="6">
-                    <int-literal-constant col_begin="8" col_end="9" digitString="6" kindParam="" line_begin="59" line_end="59" rule="406"/>
+                <operand col_begin="8" col_end="9" line_begin="63" line_end="63">
+                  <literal col_begin="8" col_end="9" line_begin="63" line_end="63" type="int" value="6">
+                    <int-literal-constant col_begin="8" col_end="9" digitString="6" kindParam="" line_begin="63" line_end="63" rule="406"/>
                     <literal-constant rule="306"/>
                     <primary rule="701"/>
                   </literal>
                 </operand>
-                <level-3-expr col_begin="7" col_end="8" line_begin="59" line_end="59" relOp="&gt;" rule="710"/>
+                <level-3-expr col_begin="7" col_end="8" line_begin="63" line_end="63" relOp="&gt;" rule="710"/>
               </operation>
             </header>
-            <if-then-stmt col_begin="3" col_end="16" eos="&#10;" id="" ifKeyword="if" line_begin="59" line_end="59" rule="803" thenKeyword="then"/>
-            <body col_begin="6" col_end="27" line_begin="60" line_end="61">
-              <statement col_begin="6" col_end="13" line_begin="60" line_end="60">
-                <assignment col_begin="6" col_end="13" line_begin="60" line_end="60">
-                  <target col_begin="6" col_end="9" line_begin="60" line_end="60">
-                    <name col_begin="6" col_end="9" hasSubscripts="false" id="ift" line_begin="60" line_end="60" type="variable">
-                      <part-ref col_begin="6" col_end="9" hasImageSelector="false" hasSectionSubscriptList="false" id="ift" line_begin="60" line_end="60" rule="613"/>
+            <if-then-stmt col_begin="3" col_end="16" eos="&#10;" id="" ifKeyword="if" line_begin="63" line_end="63" rule="803" thenKeyword="then"/>
+            <body col_begin="6" col_end="27" line_begin="64" line_end="65">
+              <statement col_begin="6" col_end="13" line_begin="64" line_end="64">
+                <assignment col_begin="6" col_end="13" line_begin="64" line_end="64">
+                  <target col_begin="6" col_end="9" line_begin="64" line_end="64">
+                    <name col_begin="6" col_end="9" hasSubscripts="false" id="ift" line_begin="64" line_end="64" type="variable">
+                      <part-ref col_begin="6" col_end="9" hasImageSelector="false" hasSectionSubscriptList="false" id="ift" line_begin="64" line_end="64" rule="613"/>
                       <data-ref numPartRef="1" rule="612"/>
                       <designator hasSubstringRange="false" rule="603"/>
                       <variable rule="601"/>
                     </name>
                   </target>
-                  <value col_begin="12" col_end="13" line_begin="60" line_end="60">
-                    <literal col_begin="12" col_end="13" line_begin="60" line_end="60" type="int" value="7">
-                      <int-literal-constant col_begin="12" col_end="13" digitString="7" kindParam="" line_begin="60" line_end="60" rule="406"/>
+                  <value col_begin="12" col_end="13" line_begin="64" line_end="64">
+                    <literal col_begin="12" col_end="13" line_begin="64" line_end="64" type="int" value="7">
+                      <int-literal-constant col_begin="12" col_end="13" digitString="7" kindParam="" line_begin="64" line_end="64" rule="406"/>
                       <literal-constant rule="306"/>
                       <primary rule="701"/>
                     </literal>
@@ -604,30 +674,30 @@
                 </assignment>
                 <action-stmt rule="214"/>
               </statement>
-              <statement col_begin="6" col_end="27" line_begin="61" line_end="61">
+              <statement col_begin="6" col_end="27" line_begin="65" line_end="65">
                 <executable-construct rule="213"/>
                 <execution-part-construct rule="209"/>
-                <write col_begin="6" col_end="27" line_begin="61" line_end="61">
-                  <io-controls col_begin="12" col_end="19" count="2" line_begin="61" line_end="61">
+                <write col_begin="6" col_end="27" line_begin="65" line_end="65">
+                  <io-controls col_begin="12" col_end="19" count="2" line_begin="65" line_end="65">
                     <io-control-spec-list__begin addendum="list-begin" rule="913"/>
-                    <io-control argument-name="unit" col_begin="12" col_end="19" line_begin="61" line_end="61">
-                      <literal col_begin="17" col_end="19" line_begin="61" line_end="61" type="int" value="23">
-                        <int-literal-constant col_begin="17" col_end="19" digitString="23" kindParam="" line_begin="61" line_end="61" rule="406"/>
+                    <io-control argument-name="unit" col_begin="12" col_end="19" line_begin="65" line_end="65">
+                      <literal col_begin="17" col_end="19" line_begin="65" line_end="65" type="int" value="23">
+                        <int-literal-constant col_begin="17" col_end="19" digitString="23" kindParam="" line_begin="65" line_end="65" rule="406"/>
                         <literal-constant rule="306"/>
                         <primary rule="701"/>
                       </literal>
-                      <io-control-spec col_begin="12" col_end="16" hasAsterisk="false" hasExpression="true" keyword="unit" line_begin="61" line_end="61" rule="913"/>
+                      <io-control-spec col_begin="12" col_end="16" hasAsterisk="false" hasExpression="true" keyword="unit" line_begin="65" line_end="65" rule="913"/>
                     </io-control>
                     <io-control argument-name="">
                       <io-control-spec hasAsterisk="true" hasExpression="false" keyword="" rule="913"/>
                     </io-control>
                     <io-control-spec-list addendum="list" count="2" rule="913"/>
                   </io-controls>
-                  <outputs col_begin="23" col_end="26" count="1" line_begin="61" line_end="61">
+                  <outputs col_begin="23" col_end="26" count="1" line_begin="65" line_end="65">
                     <output-item-list__begin addendum="list-begin" rule="916"/>
-                    <output col_begin="23" col_end="26" line_begin="61" line_end="61">
-                      <name col_begin="23" col_end="26" hasSubscripts="false" id="ift" line_begin="61" line_end="61" type="ambiguous">
-                        <part-ref col_begin="23" col_end="26" hasImageSelector="false" hasSectionSubscriptList="false" id="ift" line_begin="61" line_end="61" rule="613"/>
+                    <output col_begin="23" col_end="26" line_begin="65" line_end="65">
+                      <name col_begin="23" col_end="26" hasSubscripts="false" id="ift" line_begin="65" line_end="65" type="ambiguous">
+                        <part-ref col_begin="23" col_end="26" hasImageSelector="false" hasSectionSubscriptList="false" id="ift" line_begin="65" line_end="65" rule="613"/>
                         <data-ref numPartRef="1" rule="612"/>
                         <designator-or-func-ref rule="-3"/>
                         <primary rule="701"/>
@@ -636,7 +706,7 @@
                     </output>
                     <output-item-list addendum="list" count="1" rule="916"/>
                   </outputs>
-                  <write-stmt col_begin="6" col_end="27" eos="&#10;" hasOutputItemList="true" line_begin="61" line_end="61" rule="911" writeKeyword="write"/>
+                  <write-stmt col_begin="6" col_end="27" eos="&#10;" hasOutputItemList="true" line_begin="65" line_end="65" rule="911" writeKeyword="write"/>
                 </write>
                 <action-stmt rule="214"/>
               </statement>
@@ -646,21 +716,21 @@
               </statement>
               <block rule="801"/>
             </body>
-            <else-stmt col_begin="3" col_end="8" elseKeyword="ELSE" eos="&#10;" id="" line_begin="62" line_end="62" rule="805"/>
-            <body col_begin="6" col_end="13" line_begin="63" line_end="63" type="else">
-              <statement col_begin="6" col_end="13" line_begin="63" line_end="63">
-                <assignment col_begin="6" col_end="13" line_begin="63" line_end="63">
-                  <target col_begin="6" col_end="9" line_begin="63" line_end="63">
-                    <name col_begin="6" col_end="9" hasSubscripts="false" id="ift" line_begin="63" line_end="63" type="variable">
-                      <part-ref col_begin="6" col_end="9" hasImageSelector="false" hasSectionSubscriptList="false" id="ift" line_begin="63" line_end="63" rule="613"/>
+            <else-stmt col_begin="3" col_end="8" elseKeyword="ELSE" eos="&#10;" id="" line_begin="66" line_end="66" rule="805"/>
+            <body col_begin="6" col_end="13" line_begin="67" line_end="67" type="else">
+              <statement col_begin="6" col_end="13" line_begin="67" line_end="67">
+                <assignment col_begin="6" col_end="13" line_begin="67" line_end="67">
+                  <target col_begin="6" col_end="9" line_begin="67" line_end="67">
+                    <name col_begin="6" col_end="9" hasSubscripts="false" id="ift" line_begin="67" line_end="67" type="variable">
+                      <part-ref col_begin="6" col_end="9" hasImageSelector="false" hasSectionSubscriptList="false" id="ift" line_begin="67" line_end="67" rule="613"/>
                       <data-ref numPartRef="1" rule="612"/>
                       <designator hasSubstringRange="false" rule="603"/>
                       <variable rule="601"/>
                     </name>
                   </target>
-                  <value col_begin="12" col_end="13" line_begin="63" line_end="63">
-                    <literal col_begin="12" col_end="13" line_begin="63" line_end="63" type="int" value="8">
-                      <int-literal-constant col_begin="12" col_end="13" digitString="8" kindParam="" line_begin="63" line_end="63" rule="406"/>
+                  <value col_begin="12" col_end="13" line_begin="67" line_end="67">
+                    <literal col_begin="12" col_end="13" line_begin="67" line_end="67" type="int" value="8">
+                      <int-literal-constant col_begin="12" col_end="13" digitString="8" kindParam="" line_begin="67" line_end="67" rule="406"/>
                       <literal-constant rule="306"/>
                       <primary rule="701"/>
                     </literal>
@@ -675,30 +745,30 @@
               </statement>
               <block rule="801"/>
             </body>
-            <end-if-stmt col_begin="3" col_end="10" endKeyword="end" eos="&#10;" id="" ifKeyword="if" line_begin="64" line_end="64" rule="806"/>
+            <end-if-stmt col_begin="3" col_end="10" endKeyword="end" eos="&#10;" id="" ifKeyword="if" line_begin="68" line_end="68" rule="806"/>
             <if-construct rule="802"/>
           </if>
-          <select col_begin="3" col_end="14" line_begin="66" line_end="73">
-            <header col_begin="16" col_end="17" line_begin="66" line_end="66">
+          <select col_begin="3" col_end="14" line_begin="70" line_end="77">
+            <header col_begin="16" col_end="17" line_begin="70" line_end="70">
               <executable-construct rule="213"/>
               <execution-part-construct rule="209"/>
-              <name col_begin="16" col_end="17" hasSubscripts="false" id="x" line_begin="66" line_end="66" type="ambiguous">
-                <part-ref col_begin="16" col_end="17" hasImageSelector="false" hasSectionSubscriptList="false" id="x" line_begin="66" line_end="66" rule="613"/>
+              <name col_begin="16" col_end="17" hasSubscripts="false" id="x" line_begin="70" line_end="70" type="ambiguous">
+                <part-ref col_begin="16" col_end="17" hasImageSelector="false" hasSectionSubscriptList="false" id="x" line_begin="70" line_end="70" rule="613"/>
                 <data-ref numPartRef="1" rule="612"/>
                 <designator-or-func-ref rule="-3"/>
                 <primary rule="701"/>
               </name>
             </header>
-            <select-case-stmt caseKeyword="case" col_begin="3" col_end="19" eos="&#10;" id="" line_begin="66" line_end="66" rule="809" selectKeyword="select"/>
-            <body col_begin="3" col_end="25" line_begin="67" line_end="72">
-              <case col_begin="3" col_end="19" line_begin="67" line_end="68" type="specific">
-                <header col_begin="8" col_end="9" line_begin="67" line_end="67">
-                  <value-ranges col_begin="8" col_end="9" count="1" line_begin="67" line_end="67">
+            <select-case-stmt caseKeyword="case" col_begin="3" col_end="19" eos="&#10;" id="" line_begin="70" line_end="70" rule="809" selectKeyword="select"/>
+            <body col_begin="3" col_end="25" line_begin="71" line_end="76">
+              <case col_begin="3" col_end="19" line_begin="71" line_end="72" type="specific">
+                <header col_begin="8" col_end="9" line_begin="71" line_end="71">
+                  <value-ranges col_begin="8" col_end="9" count="1" line_begin="71" line_end="71">
                     <case-value-range-list__begin addendum="list-begin" rule="814"/>
-                    <value-range col_begin="8" col_end="9" line_begin="67" line_end="67">
-                      <value col_begin="8" col_end="9" line_begin="67" line_end="67">
-                        <literal col_begin="8" col_end="9" line_begin="67" line_end="67" type="int" value="1">
-                          <int-literal-constant col_begin="8" col_end="9" digitString="1" kindParam="" line_begin="67" line_end="67" rule="406"/>
+                    <value-range col_begin="8" col_end="9" line_begin="71" line_end="71">
+                      <value col_begin="8" col_end="9" line_begin="71" line_end="71">
+                        <literal col_begin="8" col_end="9" line_begin="71" line_end="71" type="int" value="1">
+                          <int-literal-constant col_begin="8" col_end="9" digitString="1" kindParam="" line_begin="71" line_end="71" rule="406"/>
                           <literal-constant rule="306"/>
                           <primary rule="701"/>
                         </literal>
@@ -715,18 +785,18 @@
                   </value-ranges>
                 </header>
                 <case-selector rule="813"/>
-                <case-stmt caseKeyword="case" col_begin="3" col_end="11" eos="&#10;" id="" line_begin="67" line_end="67" rule="810"/>
-                <body col_begin="6" col_end="19" line_begin="68" line_end="68">
-                  <statement col_begin="6" col_end="19" line_begin="68" line_end="68">
-                    <print col_begin="6" col_end="19" line_begin="68" line_end="68">
+                <case-stmt caseKeyword="case" col_begin="3" col_end="11" eos="&#10;" id="" line_begin="71" line_end="71" rule="810"/>
+                <body col_begin="6" col_end="19" line_begin="72" line_end="72">
+                  <statement col_begin="6" col_end="19" line_begin="72" line_end="72">
+                    <print col_begin="6" col_end="19" line_begin="72" line_end="72">
                       <print-format type="*">
                         <format rule="914"/>
                       </print-format>
-                      <outputs col_begin="15" col_end="18" count="1" line_begin="68" line_end="68">
+                      <outputs col_begin="15" col_end="18" count="1" line_begin="72" line_end="72">
                         <output-item-list__begin addendum="list-begin" rule="916"/>
-                        <output col_begin="15" col_end="18" line_begin="68" line_end="68">
-                          <literal col_begin="15" col_end="18" line_begin="68" line_end="68" type="char" value="&quot;1&quot;">
-                            <char-literal-constant col_begin="15" col_end="18" digitString-kind-param="" identifier-kind-param="" line_begin="68" line_end="68" rule="427" str="&quot;1&quot;"/>
+                        <output col_begin="15" col_end="18" line_begin="72" line_end="72">
+                          <literal col_begin="15" col_end="18" line_begin="72" line_end="72" type="char" value="&quot;1&quot;">
+                            <char-literal-constant col_begin="15" col_end="18" digitString-kind-param="" identifier-kind-param="" line_begin="72" line_end="72" rule="427" str="&quot;1&quot;"/>
                             <literal-constant rule="306"/>
                             <primary rule="701"/>
                           </literal>
@@ -734,7 +804,7 @@
                         </output>
                         <output-item-list addendum="list" count="1" rule="916"/>
                       </outputs>
-                      <print-stmt col_begin="6" col_end="19" eos="&#10;" hasOutputItemList="true" line_begin="68" line_end="68" printKeyword="print" rule="912"/>
+                      <print-stmt col_begin="6" col_end="19" eos="&#10;" hasOutputItemList="true" line_begin="72" line_end="72" printKeyword="print" rule="912"/>
                     </print>
                     <action-stmt rule="214"/>
                   </statement>
@@ -745,14 +815,14 @@
                   <block rule="801"/>
                 </body>
               </case>
-              <case col_begin="3" col_end="19" line_begin="69" line_end="70" type="specific">
-                <header col_begin="8" col_end="9" line_begin="69" line_end="69">
-                  <value-ranges col_begin="8" col_end="9" count="1" line_begin="69" line_end="69">
+              <case col_begin="3" col_end="19" line_begin="73" line_end="74" type="specific">
+                <header col_begin="8" col_end="9" line_begin="73" line_end="73">
+                  <value-ranges col_begin="8" col_end="9" count="1" line_begin="73" line_end="73">
                     <case-value-range-list__begin addendum="list-begin" rule="814"/>
-                    <value-range col_begin="8" col_end="9" line_begin="69" line_end="69">
-                      <value col_begin="8" col_end="9" line_begin="69" line_end="69">
-                        <literal col_begin="8" col_end="9" line_begin="69" line_end="69" type="int" value="2">
-                          <int-literal-constant col_begin="8" col_end="9" digitString="2" kindParam="" line_begin="69" line_end="69" rule="406"/>
+                    <value-range col_begin="8" col_end="9" line_begin="73" line_end="73">
+                      <value col_begin="8" col_end="9" line_begin="73" line_end="73">
+                        <literal col_begin="8" col_end="9" line_begin="73" line_end="73" type="int" value="2">
+                          <int-literal-constant col_begin="8" col_end="9" digitString="2" kindParam="" line_begin="73" line_end="73" rule="406"/>
                           <literal-constant rule="306"/>
                           <primary rule="701"/>
                         </literal>
@@ -769,18 +839,18 @@
                   </value-ranges>
                 </header>
                 <case-selector rule="813"/>
-                <case-stmt caseKeyword="case" col_begin="3" col_end="11" eos="&#10;" id="" line_begin="69" line_end="69" rule="810"/>
-                <body col_begin="6" col_end="19" line_begin="70" line_end="70">
-                  <statement col_begin="6" col_end="19" line_begin="70" line_end="70">
-                    <print col_begin="6" col_end="19" line_begin="70" line_end="70">
+                <case-stmt caseKeyword="case" col_begin="3" col_end="11" eos="&#10;" id="" line_begin="73" line_end="73" rule="810"/>
+                <body col_begin="6" col_end="19" line_begin="74" line_end="74">
+                  <statement col_begin="6" col_end="19" line_begin="74" line_end="74">
+                    <print col_begin="6" col_end="19" line_begin="74" line_end="74">
                       <print-format type="*">
                         <format rule="914"/>
                       </print-format>
-                      <outputs col_begin="15" col_end="18" count="1" line_begin="70" line_end="70">
+                      <outputs col_begin="15" col_end="18" count="1" line_begin="74" line_end="74">
                         <output-item-list__begin addendum="list-begin" rule="916"/>
-                        <output col_begin="15" col_end="18" line_begin="70" line_end="70">
-                          <literal col_begin="15" col_end="18" line_begin="70" line_end="70" type="char" value="&quot;2&quot;">
-                            <char-literal-constant col_begin="15" col_end="18" digitString-kind-param="" identifier-kind-param="" line_begin="70" line_end="70" rule="427" str="&quot;2&quot;"/>
+                        <output col_begin="15" col_end="18" line_begin="74" line_end="74">
+                          <literal col_begin="15" col_end="18" line_begin="74" line_end="74" type="char" value="&quot;2&quot;">
+                            <char-literal-constant col_begin="15" col_end="18" digitString-kind-param="" identifier-kind-param="" line_begin="74" line_end="74" rule="427" str="&quot;2&quot;"/>
                             <literal-constant rule="306"/>
                             <primary rule="701"/>
                           </literal>
@@ -788,7 +858,7 @@
                         </output>
                         <output-item-list addendum="list" count="1" rule="916"/>
                       </outputs>
-                      <print-stmt col_begin="6" col_end="19" eos="&#10;" hasOutputItemList="true" line_begin="70" line_end="70" printKeyword="print" rule="912"/>
+                      <print-stmt col_begin="6" col_end="19" eos="&#10;" hasOutputItemList="true" line_begin="74" line_end="74" printKeyword="print" rule="912"/>
                     </print>
                     <action-stmt rule="214"/>
                   </statement>
@@ -799,21 +869,21 @@
                   <block rule="801"/>
                 </body>
               </case>
-              <case col_begin="3" col_end="25" line_begin="71" line_end="72" type="default">
+              <case col_begin="3" col_end="25" line_begin="75" line_end="76" type="default">
                 <header/>
                 <case-selector rule="813"/>
-                <case-stmt caseKeyword="case" col_begin="3" col_end="16" eos="&#10;" id="" line_begin="71" line_end="71" rule="810"/>
-                <body col_begin="6" col_end="25" line_begin="72" line_end="72">
-                  <statement col_begin="6" col_end="25" line_begin="72" line_end="72">
-                    <print col_begin="6" col_end="25" line_begin="72" line_end="72">
+                <case-stmt caseKeyword="case" col_begin="3" col_end="16" eos="&#10;" id="" line_begin="75" line_end="75" rule="810"/>
+                <body col_begin="6" col_end="25" line_begin="76" line_end="76">
+                  <statement col_begin="6" col_end="25" line_begin="76" line_end="76">
+                    <print col_begin="6" col_end="25" line_begin="76" line_end="76">
                       <print-format type="*">
                         <format rule="914"/>
                       </print-format>
-                      <outputs col_begin="15" col_end="24" count="1" line_begin="72" line_end="72">
+                      <outputs col_begin="15" col_end="24" count="1" line_begin="76" line_end="76">
                         <output-item-list__begin addendum="list-begin" rule="916"/>
-                        <output col_begin="15" col_end="24" line_begin="72" line_end="72">
-                          <literal col_begin="15" col_end="24" line_begin="72" line_end="72" type="char" value="'nao sei'">
-                            <char-literal-constant col_begin="15" col_end="24" digitString-kind-param="" identifier-kind-param="" line_begin="72" line_end="72" rule="427" str="'nao sei'"/>
+                        <output col_begin="15" col_end="24" line_begin="76" line_end="76">
+                          <literal col_begin="15" col_end="24" line_begin="76" line_end="76" type="char" value="'nao sei'">
+                            <char-literal-constant col_begin="15" col_end="24" digitString-kind-param="" identifier-kind-param="" line_begin="76" line_end="76" rule="427" str="'nao sei'"/>
                             <literal-constant rule="306"/>
                             <primary rule="701"/>
                           </literal>
@@ -821,7 +891,7 @@
                         </output>
                         <output-item-list addendum="list" count="1" rule="916"/>
                       </outputs>
-                      <print-stmt col_begin="6" col_end="25" eos="&#10;" hasOutputItemList="true" line_begin="72" line_end="72" printKeyword="print" rule="912"/>
+                      <print-stmt col_begin="6" col_end="25" eos="&#10;" hasOutputItemList="true" line_begin="76" line_end="76" printKeyword="print" rule="912"/>
                     </print>
                     <action-stmt rule="214"/>
                   </statement>
@@ -833,59 +903,59 @@
                 </body>
               </case>
             </body>
-            <end-select-stmt col_begin="3" col_end="14" endKeyword="end" eos="&#10;" id="" line_begin="73" line_end="73" rule="811" selectKeyword="select"/>
+            <end-select-stmt col_begin="3" col_end="14" endKeyword="end" eos="&#10;" id="" line_begin="77" line_end="77" rule="811" selectKeyword="select"/>
             <case-construct rule="808"/>
           </select>
-          <if col_begin="3" col_end="32" line_begin="75" line_end="75">
+          <if col_begin="3" col_end="32" line_begin="79" line_end="79">
             <executable-construct rule="213"/>
             <execution-part-construct rule="209"/>
             <if-stmt__begin addendum="begin" rule="807"/>
-            <header col_begin="6" col_end="9" line_begin="75" line_end="75">
-              <operation col_begin="6" col_end="9" line_begin="75" line_end="75" type="multiary">
-                <operand col_begin="6" col_end="7" line_begin="75" line_end="75">
-                  <name col_begin="6" col_end="7" hasSubscripts="false" id="x" line_begin="75" line_end="75" type="ambiguous">
-                    <part-ref col_begin="6" col_end="7" hasImageSelector="false" hasSectionSubscriptList="false" id="x" line_begin="75" line_end="75" rule="613"/>
+            <header col_begin="6" col_end="9" line_begin="79" line_end="79">
+              <operation col_begin="6" col_end="9" line_begin="79" line_end="79" type="multiary">
+                <operand col_begin="6" col_end="7" line_begin="79" line_end="79">
+                  <name col_begin="6" col_end="7" hasSubscripts="false" id="x" line_begin="79" line_end="79" type="ambiguous">
+                    <part-ref col_begin="6" col_end="7" hasImageSelector="false" hasSectionSubscriptList="false" id="x" line_begin="79" line_end="79" rule="613"/>
                     <data-ref numPartRef="1" rule="612"/>
                     <designator-or-func-ref rule="-3"/>
                     <primary rule="701"/>
                   </name>
                 </operand>
-                <operator col_begin="7" col_end="8" line_begin="75" line_end="75" operator="&lt;">
+                <operator col_begin="7" col_end="8" line_begin="79" line_end="79" operator="&lt;">
                   <rel-op rule="713"/>
                 </operator>
-                <operand col_begin="8" col_end="9" line_begin="75" line_end="75">
-                  <literal col_begin="8" col_end="9" line_begin="75" line_end="75" type="int" value="1">
-                    <int-literal-constant col_begin="8" col_end="9" digitString="1" kindParam="" line_begin="75" line_end="75" rule="406"/>
+                <operand col_begin="8" col_end="9" line_begin="79" line_end="79">
+                  <literal col_begin="8" col_end="9" line_begin="79" line_end="79" type="int" value="1">
+                    <int-literal-constant col_begin="8" col_end="9" digitString="1" kindParam="" line_begin="79" line_end="79" rule="406"/>
                     <literal-constant rule="306"/>
                     <primary rule="701"/>
                   </literal>
                 </operand>
-                <level-3-expr col_begin="7" col_end="8" line_begin="75" line_end="75" relOp="&lt;" rule="710"/>
+                <level-3-expr col_begin="7" col_end="8" line_begin="79" line_end="79" relOp="&lt;" rule="710"/>
               </operation>
             </header>
-            <body col_begin="11" col_end="32" line_begin="75" line_end="75">
-              <statement col_begin="11" col_end="32" line_begin="75" line_end="75">
-                <write col_begin="11" col_end="32" line_begin="75" line_end="75">
-                  <io-controls col_begin="17" col_end="24" count="2" line_begin="75" line_end="75">
+            <body col_begin="11" col_end="32" line_begin="79" line_end="79">
+              <statement col_begin="11" col_end="32" line_begin="79" line_end="79">
+                <write col_begin="11" col_end="32" line_begin="79" line_end="79">
+                  <io-controls col_begin="17" col_end="24" count="2" line_begin="79" line_end="79">
                     <io-control-spec-list__begin addendum="list-begin" rule="913"/>
-                    <io-control argument-name="unit" col_begin="17" col_end="24" line_begin="75" line_end="75">
-                      <literal col_begin="22" col_end="24" line_begin="75" line_end="75" type="int" value="23">
-                        <int-literal-constant col_begin="22" col_end="24" digitString="23" kindParam="" line_begin="75" line_end="75" rule="406"/>
+                    <io-control argument-name="unit" col_begin="17" col_end="24" line_begin="79" line_end="79">
+                      <literal col_begin="22" col_end="24" line_begin="79" line_end="79" type="int" value="23">
+                        <int-literal-constant col_begin="22" col_end="24" digitString="23" kindParam="" line_begin="79" line_end="79" rule="406"/>
                         <literal-constant rule="306"/>
                         <primary rule="701"/>
                       </literal>
-                      <io-control-spec col_begin="17" col_end="21" hasAsterisk="false" hasExpression="true" keyword="unit" line_begin="75" line_end="75" rule="913"/>
+                      <io-control-spec col_begin="17" col_end="21" hasAsterisk="false" hasExpression="true" keyword="unit" line_begin="79" line_end="79" rule="913"/>
                     </io-control>
                     <io-control argument-name="">
                       <io-control-spec hasAsterisk="true" hasExpression="false" keyword="" rule="913"/>
                     </io-control>
                     <io-control-spec-list addendum="list" count="2" rule="913"/>
                   </io-controls>
-                  <outputs col_begin="28" col_end="31" count="1" line_begin="75" line_end="75">
+                  <outputs col_begin="28" col_end="31" count="1" line_begin="79" line_end="79">
                     <output-item-list__begin addendum="list-begin" rule="916"/>
-                    <output col_begin="28" col_end="31" line_begin="75" line_end="75">
-                      <name col_begin="28" col_end="31" hasSubscripts="false" id="ift" line_begin="75" line_end="75" type="ambiguous">
-                        <part-ref col_begin="28" col_end="31" hasImageSelector="false" hasSectionSubscriptList="false" id="ift" line_begin="75" line_end="75" rule="613"/>
+                    <output col_begin="28" col_end="31" line_begin="79" line_end="79">
+                      <name col_begin="28" col_end="31" hasSubscripts="false" id="ift" line_begin="79" line_end="79" type="ambiguous">
+                        <part-ref col_begin="28" col_end="31" hasImageSelector="false" hasSectionSubscriptList="false" id="ift" line_begin="79" line_end="79" rule="613"/>
                         <data-ref numPartRef="1" rule="612"/>
                         <designator-or-func-ref rule="-3"/>
                         <primary rule="701"/>
@@ -894,35 +964,35 @@
                     </output>
                     <output-item-list addendum="list" count="1" rule="916"/>
                   </outputs>
-                  <write-stmt col_begin="11" col_end="32" eos="&#10;" hasOutputItemList="true" line_begin="75" line_end="75" rule="911" writeKeyword="write"/>
+                  <write-stmt col_begin="11" col_end="32" eos="&#10;" hasOutputItemList="true" line_begin="79" line_end="79" rule="911" writeKeyword="write"/>
                 </write>
                 <action-stmt rule="214"/>
               </statement>
               <statement/>
             </body>
-            <if-stmt col_begin="3" col_end="5" ifKeyword="if" line_begin="75" line_end="75" rule="807"/>
+            <if-stmt col_begin="3" col_end="5" ifKeyword="if" line_begin="79" line_end="79" rule="807"/>
           </if>
           <statement>
             <action-stmt rule="214"/>
           </statement>
-          <statement col_begin="3" col_end="18" line_begin="77" line_end="77">
+          <statement col_begin="3" col_end="18" line_begin="81" line_end="81">
             <executable-construct rule="213"/>
             <execution-part-construct rule="209"/>
-            <close col_begin="3" col_end="18" line_begin="77" line_end="77">
-              <keyword-arguments col_begin="9" col_end="16" count="1" line_begin="77" line_end="77">
+            <close col_begin="3" col_end="18" line_begin="81" line_end="81">
+              <keyword-arguments col_begin="9" col_end="16" count="1" line_begin="81" line_end="81">
                 <close-spec-list__begin addendum="list-begin" rule="909"/>
-                <keyword-argument argument-name="unit" col_begin="9" col_end="16" line_begin="77" line_end="77">
-                  <literal col_begin="14" col_end="16" line_begin="77" line_end="77" type="int" value="23">
-                    <int-literal-constant col_begin="14" col_end="16" digitString="23" kindParam="" line_begin="77" line_end="77" rule="406"/>
+                <keyword-argument argument-name="unit" col_begin="9" col_end="16" line_begin="81" line_end="81">
+                  <literal col_begin="14" col_end="16" line_begin="81" line_end="81" type="int" value="23">
+                    <int-literal-constant col_begin="14" col_end="16" digitString="23" kindParam="" line_begin="81" line_end="81" rule="406"/>
                     <literal-constant rule="306"/>
                     <primary rule="701"/>
                   </literal>
                 </keyword-argument>
-                <close-spec closeSpec="unit" col_begin="9" col_end="13" line_begin="77" line_end="77" rule="721"/>
+                <close-spec closeSpec="unit" col_begin="9" col_end="13" line_begin="81" line_end="81" rule="721"/>
                 <keyword-argument/>
                 <close-spec-list addendum="list" count="1" rule="909"/>
               </keyword-arguments>
-              <close-stmt closeKeyword="close" col_begin="3" col_end="18" eos="&#10;" line_begin="77" line_end="77" rule="908"/>
+              <close-stmt closeKeyword="close" col_begin="3" col_end="18" eos="&#10;" line_begin="81" line_end="81" rule="908"/>
             </close>
             <action-stmt rule="214"/>
           </statement>
@@ -933,234 +1003,234 @@
           </statement>
         </statement>
       </body>
-      <end-subroutine-stmt col_begin="0" col_end="21" eos="&#10;" keyword1="end" keyword2="subroutine" line_begin="79" line_end="79" name="tst_1" rule="1234"/>
+      <end-subroutine-stmt col_begin="0" col_end="21" eos="&#10;" keyword1="end" keyword2="subroutine" line_begin="83" line_end="83" name="tst_1" rule="1234"/>
     </subroutine>
-    <subroutine col_begin="0" col_end="19" line_begin="82" line_end="136" name="ifx">
-      <header col_begin="0" col_end="24" line_begin="82" line_end="82">
+    <subroutine col_begin="0" col_end="19" line_begin="86" line_end="140" name="ifx">
+      <header col_begin="0" col_end="24" line_begin="86" line_end="86">
         <subroutine-stmt__begin addendum="begin" rule="1232"/>
-        <arguments col_begin="15" col_end="22" count="1" line_begin="82" line_end="82">
+        <arguments col_begin="15" col_end="22" count="1" line_begin="86" line_end="86">
           <dummy-arg-list__begin addendum="list-begin" rule="1233"/>
-          <argument col_begin="15" col_end="22" line_begin="82" line_end="82" name="b_teste">
-            <dummy-arg col_begin="15" col_end="22" dummy="b_teste" line_begin="82" line_end="82" rule="1233"/>
+          <argument col_begin="15" col_end="22" line_begin="86" line_end="86" name="b_teste">
+            <dummy-arg col_begin="15" col_end="22" dummy="b_teste" line_begin="86" line_end="86" rule="1233"/>
           </argument>
           <dummy-arg-list addendum="list" count="1" rule="1233"/>
         </arguments>
-        <subroutine-stmt col_begin="0" col_end="24" eos="&#10;" hasArgSpecifier="true" hasBindingSpec="false" hasDummyArgList="true" hasPrefix="false" keyword="subroutine" line_begin="82" line_end="82" name="ifx" rule="1232"/>
+        <subroutine-stmt col_begin="0" col_end="24" eos="&#10;" hasArgSpecifier="true" hasBindingSpec="false" hasDummyArgList="true" hasPrefix="false" keyword="subroutine" line_begin="86" line_end="86" name="ifx" rule="1232"/>
       </header>
-      <body col_begin="3" col_end="16" line_begin="83" line_end="134">
-        <comment col_begin="3" col_end="14" line_begin="83" line_end="83" text="!! ## teste"/>
-        <comment col_begin="3" col_end="5" line_begin="84" line_end="84" text="!!"/>
-        <comment col_begin="3" col_end="19" line_begin="85" line_end="85" text="!! Author: autor"/>
-        <comment col_begin="3" col_end="5" line_begin="86" line_end="86" text="!!"/>
-        <comment col_begin="3" col_end="28" line_begin="87" line_end="87" text="!! E-mail: &lt;mailto:email&gt;"/>
+      <body col_begin="3" col_end="16" line_begin="87" line_end="138">
+        <comment col_begin="3" col_end="14" line_begin="87" line_end="87" text="!! ## teste"/>
         <comment col_begin="3" col_end="5" line_begin="88" line_end="88" text="!!"/>
-        <comment col_begin="3" col_end="33" line_begin="89" line_end="89" text="!! Date: 15Fevereiro2023 09:04"/>
+        <comment col_begin="3" col_end="19" line_begin="89" line_end="89" text="!! Author: autor"/>
         <comment col_begin="3" col_end="5" line_begin="90" line_end="90" text="!!"/>
-        <comment col_begin="3" col_end="27" line_begin="91" line_end="91" text="!! #####Version: version"/>
+        <comment col_begin="3" col_end="28" line_begin="91" line_end="91" text="!! E-mail: &lt;mailto:email&gt;"/>
         <comment col_begin="3" col_end="5" line_begin="92" line_end="92" text="!!"/>
-        <comment col_begin="3" col_end="9" line_begin="93" line_end="93" text="!! ---"/>
-        <comment col_begin="3" col_end="27" line_begin="94" line_end="94" text="!! **Full description**:"/>
-        <comment col_begin="3" col_end="5" line_begin="95" line_end="95" text="!!"/>
-        <comment col_begin="3" col_end="11" line_begin="96" line_end="96" text="!! teste"/>
-        <comment col_begin="3" col_end="5" line_begin="97" line_end="97" text="!!"/>
-        <comment col_begin="3" col_end="19" line_begin="98" line_end="98" text="!! ** History**:"/>
+        <comment col_begin="3" col_end="33" line_begin="93" line_end="93" text="!! Date: 15Fevereiro2023 09:04"/>
+        <comment col_begin="3" col_end="5" line_begin="94" line_end="94" text="!!"/>
+        <comment col_begin="3" col_end="27" line_begin="95" line_end="95" text="!! #####Version: version"/>
+        <comment col_begin="3" col_end="5" line_begin="96" line_end="96" text="!!"/>
+        <comment col_begin="3" col_end="9" line_begin="97" line_end="97" text="!! ---"/>
+        <comment col_begin="3" col_end="27" line_begin="98" line_end="98" text="!! **Full description**:"/>
         <comment col_begin="3" col_end="5" line_begin="99" line_end="99" text="!!"/>
-        <comment col_begin="3" col_end="10" line_begin="100" line_end="100" text="!! --- "/>
-        <comment col_begin="3" col_end="72" line_begin="101" line_end="101" text="!! ** Licence **: Under the terms of the GNU General Public version 3"/>
-        <comment col_begin="3" col_end="75" line_begin="102" line_end="102" text="!!   &lt;img src=&quot;https://www.gnu.org/graphics/gplv3-127x51.png width=&quot;63&quot;&gt;"/>
+        <comment col_begin="3" col_end="11" line_begin="100" line_end="100" text="!! teste"/>
+        <comment col_begin="3" col_end="5" line_begin="101" line_end="101" text="!!"/>
+        <comment col_begin="3" col_end="19" line_begin="102" line_end="102" text="!! ** History**:"/>
         <comment col_begin="3" col_end="5" line_begin="103" line_end="103" text="!!"/>
-        <specification col_begin="3" col_end="62" declarations="6" implicits="1" imports="0" line_begin="105" line_end="122" uses="0">
-          <declaration col_begin="3" col_end="17" line_begin="105" line_end="105" subtype="none" type="implicit">
-            <implicit-stmt col_begin="3" col_end="17" eos="&#10;" hasImplicitSpecList="false" implicitKeyword="IMPLICIT" line_begin="105" line_end="105" noneKeyword="NONE" rule="549"/>
+        <comment col_begin="3" col_end="10" line_begin="104" line_end="104" text="!! --- "/>
+        <comment col_begin="3" col_end="72" line_begin="105" line_end="105" text="!! ** Licence **: Under the terms of the GNU General Public version 3"/>
+        <comment col_begin="3" col_end="75" line_begin="106" line_end="106" text="!!   &lt;img src=&quot;https://www.gnu.org/graphics/gplv3-127x51.png width=&quot;63&quot;&gt;"/>
+        <comment col_begin="3" col_end="5" line_begin="107" line_end="107" text="!!"/>
+        <specification col_begin="3" col_end="62" declarations="6" implicits="1" imports="0" line_begin="109" line_end="126" uses="0">
+          <declaration col_begin="3" col_end="17" line_begin="109" line_end="109" subtype="none" type="implicit">
+            <implicit-stmt col_begin="3" col_end="17" eos="&#10;" hasImplicitSpecList="false" implicitKeyword="IMPLICIT" line_begin="109" line_end="109" noneKeyword="NONE" rule="549"/>
           </declaration>
-          <comment col_begin="3" col_end="16" line_begin="106" line_end="106" text="!Parameters: "/>
-          <declaration col_begin="3" col_end="56" line_begin="107" line_end="107" type="variable">
-            <type col_begin="3" col_end="16" hasAttributes="true" hasKind="false" hasLength="false" line_begin="107" line_end="107" name="character" type="intrinsic">
-              <type-attributes col_begin="13" col_end="16" line_begin="107" line_end="107">
+          <comment col_begin="3" col_end="16" line_begin="110" line_end="110" text="!Parameters: "/>
+          <declaration col_begin="3" col_end="56" line_begin="111" line_end="111" type="variable">
+            <type col_begin="3" col_end="16" hasAttributes="true" hasKind="false" hasLength="false" line_begin="111" line_end="111" name="character" type="intrinsic">
+              <type-attributes col_begin="13" col_end="16" line_begin="111" line_end="111">
                 <length>
                   <type-param-value hasAsterisk="true" hasColon="false" hasExpr="false" rule="402"/>
                 </length>
-                <char-selector col_begin="13" col_end="16" hasAsterisk="false" kindOrLen1="302" kindOrLen2="300" line_begin="107" line_end="107" rule="424" tk1="len" tk2=""/>
+                <char-selector col_begin="13" col_end="16" hasAsterisk="false" kindOrLen1="302" kindOrLen2="300" line_begin="111" line_end="111" rule="424" tk1="len" tk2=""/>
               </type-attributes>
-              <intrinsic-type-spec col_begin="3" col_end="12" hasKindSelector="true" keyword1="character" keyword2="" line_begin="107" line_end="107" rule="403" type="405"/>
+              <intrinsic-type-spec col_begin="3" col_end="12" hasKindSelector="true" keyword1="character" keyword2="" line_begin="111" line_end="111" rule="403" type="405"/>
               <declaration-type-spec rule="502" type="500" udtKeyword=""/>
             </type>
-            <attribute-parameter col_begin="21" col_end="30" line_begin="107" line_end="107">
-              <attr-spec attr="815" attrKeyword="parameter" col_begin="21" col_end="30" line_begin="107" line_end="107" rule="503"/>
+            <attribute-parameter col_begin="21" col_end="30" line_begin="111" line_end="111">
+              <attr-spec attr="815" attrKeyword="parameter" col_begin="21" col_end="30" line_begin="111" line_end="111" rule="503"/>
             </attribute-parameter>
-            <variables col_begin="34" col_end="55" count="1" line_begin="107" line_end="107">
+            <variables col_begin="34" col_end="55" count="1" line_begin="111" line_end="111">
               <entity-decl-list__begin addendum="list-begin" rule="503008"/>
-              <variable col_begin="34" col_end="55" hasInitialValue="true" line_begin="107" line_end="107" name="procedureName">
-                <initial-value col_begin="50" col_end="55" line_begin="107" line_end="107">
-                  <literal col_begin="50" col_end="55" line_begin="107" line_end="107" type="char" value="'xxx'">
-                    <char-literal-constant col_begin="50" col_end="55" digitString-kind-param="" identifier-kind-param="" line_begin="107" line_end="107" rule="427" str="'xxx'"/>
+              <variable col_begin="34" col_end="55" hasInitialValue="true" line_begin="111" line_end="111" name="procedureName">
+                <initial-value col_begin="50" col_end="55" line_begin="111" line_end="111">
+                  <literal col_begin="50" col_end="55" line_begin="111" line_end="111" type="char" value="'xxx'">
+                    <char-literal-constant col_begin="50" col_end="55" digitString-kind-param="" identifier-kind-param="" line_begin="111" line_end="111" rule="427" str="'xxx'"/>
                     <literal-constant rule="306"/>
                     <primary rule="701"/>
                   </literal>
                   <initialization hasExpr="true" hasNullInit="false" rule="506"/>
                 </initial-value>
-                <entity-decl col_begin="34" col_end="47" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="true" id="procedureName" line_begin="107" line_end="107" rule="503008"/>
+                <entity-decl col_begin="34" col_end="47" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="true" id="procedureName" line_begin="111" line_end="111" rule="503008"/>
               </variable>
               <variable/>
               <entity-decl-list addendum="list" count="1" rule="503008"/>
             </variables>
-            <type-declaration-stmt col_begin="55" col_end="56" eos="&#10;" line_begin="107" line_end="107" numAttributes="1" rule="501"/>
+            <type-declaration-stmt col_begin="55" col_end="56" eos="&#10;" line_begin="111" line_end="111" numAttributes="1" rule="501"/>
           </declaration>
           <declaration-construct rule="207"/>
-          <comment col_begin="3" col_end="69" line_begin="108" line_end="108" text="!! subroutine name -------&gt;&gt;&gt;&gt;&gt;&gt;inicio dos erros nas linhas -&gt; 105"/>
-          <declaration col_begin="3" col_end="32" line_begin="110" line_end="110" type="variable">
-            <type col_begin="3" col_end="7" hasAttributes="false" hasKind="false" hasLength="false" line_begin="110" line_end="110" name="real" type="intrinsic">
-              <intrinsic-type-spec col_begin="3" col_end="7" hasKindSelector="false" keyword1="real" keyword2="" line_begin="110" line_end="110" rule="403" type="401"/>
+          <comment col_begin="3" col_end="69" line_begin="112" line_end="112" text="!! subroutine name -------&gt;&gt;&gt;&gt;&gt;&gt;inicio dos erros nas linhas -&gt; 105"/>
+          <declaration col_begin="3" col_end="32" line_begin="114" line_end="114" type="variable">
+            <type col_begin="3" col_end="7" hasAttributes="false" hasKind="false" hasLength="false" line_begin="114" line_end="114" name="real" type="intrinsic">
+              <intrinsic-type-spec col_begin="3" col_end="7" hasKindSelector="false" keyword1="real" keyword2="" line_begin="114" line_end="114" rule="403" type="401"/>
               <declaration-type-spec rule="502" type="500" udtKeyword=""/>
             </type>
-            <attribute-parameter col_begin="10" col_end="19" line_begin="110" line_end="110">
-              <attr-spec attr="815" attrKeyword="parameter" col_begin="10" col_end="19" line_begin="110" line_end="110" rule="503"/>
+            <attribute-parameter col_begin="10" col_end="19" line_begin="114" line_end="114">
+              <attr-spec attr="815" attrKeyword="parameter" col_begin="10" col_end="19" line_begin="114" line_end="114" rule="503"/>
             </attribute-parameter>
-            <variables col_begin="23" col_end="30" count="1" line_begin="110" line_end="110">
+            <variables col_begin="23" col_end="30" count="1" line_begin="114" line_end="114">
               <entity-decl-list__begin addendum="list-begin" rule="503008"/>
-              <variable col_begin="23" col_end="30" hasInitialValue="true" line_begin="110" line_end="110" name="g">
-                <initial-value col_begin="27" col_end="30" line_begin="110" line_end="110">
-                  <literal col_begin="27" col_end="30" line_begin="110" line_end="110" type="real" value="9.8">
-                    <real-literal-constant col_begin="27" col_end="30" kindParam="" line_begin="110" line_end="110" realConstant="9.8" rule="417"/>
+              <variable col_begin="23" col_end="30" hasInitialValue="true" line_begin="114" line_end="114" name="g">
+                <initial-value col_begin="27" col_end="30" line_begin="114" line_end="114">
+                  <literal col_begin="27" col_end="30" line_begin="114" line_end="114" type="real" value="9.8">
+                    <real-literal-constant col_begin="27" col_end="30" kindParam="" line_begin="114" line_end="114" realConstant="9.8" rule="417"/>
                     <literal-constant rule="306"/>
                     <primary rule="701"/>
                   </literal>
                   <initialization hasExpr="true" hasNullInit="false" rule="506"/>
                 </initial-value>
-                <entity-decl col_begin="23" col_end="24" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="true" id="g" line_begin="110" line_end="110" rule="503008"/>
+                <entity-decl col_begin="23" col_end="24" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="true" id="g" line_begin="114" line_end="114" rule="503008"/>
               </variable>
               <variable/>
               <entity-decl-list addendum="list" count="1" rule="503008"/>
             </variables>
-            <type-declaration-stmt col_begin="31" col_end="32" eos="&#10;" line_begin="110" line_end="110" numAttributes="1" rule="501"/>
+            <type-declaration-stmt col_begin="31" col_end="32" eos="&#10;" line_begin="114" line_end="114" numAttributes="1" rule="501"/>
           </declaration>
           <declaration-construct rule="207"/>
-          <comment col_begin="3" col_end="29" line_begin="112" line_end="112" text="!! constante geométrica pi"/>
-          <comment col_begin="3" col_end="36" line_begin="114" line_end="114" text="!Variables (input, output, inout)"/>
-          <declaration col_begin="3" col_end="31" line_begin="115" line_end="115" type="variable">
-            <type col_begin="3" col_end="7" hasAttributes="false" hasKind="false" hasLength="false" line_begin="115" line_end="115" name="real" type="intrinsic">
-              <intrinsic-type-spec col_begin="3" col_end="7" hasKindSelector="false" keyword1="real" keyword2="" line_begin="115" line_end="115" rule="403" type="401"/>
+          <comment col_begin="3" col_end="29" line_begin="116" line_end="116" text="!! constante geométrica pi"/>
+          <comment col_begin="3" col_end="36" line_begin="118" line_end="118" text="!Variables (input, output, inout)"/>
+          <declaration col_begin="3" col_end="31" line_begin="119" line_end="119" type="variable">
+            <type col_begin="3" col_end="7" hasAttributes="false" hasKind="false" hasLength="false" line_begin="119" line_end="119" name="real" type="intrinsic">
+              <intrinsic-type-spec col_begin="3" col_end="7" hasKindSelector="false" keyword1="real" keyword2="" line_begin="119" line_end="119" rule="403" type="401"/>
               <declaration-type-spec rule="502" type="500" udtKeyword=""/>
             </type>
-            <intent col_begin="16" col_end="18" line_begin="115" line_end="115" type="in">
-              <intent-spec col_begin="16" col_end="18" intent="600" intentKeyword1="in" intentKeyword2="" line_begin="115" line_end="115" rule="517"/>
+            <intent col_begin="16" col_end="18" line_begin="119" line_end="119" type="in">
+              <intent-spec col_begin="16" col_end="18" intent="600" intentKeyword1="in" intentKeyword2="" line_begin="119" line_end="119" rule="517"/>
             </intent>
-            <attr-spec attr="811" attrKeyword="intent" col_begin="9" col_end="15" line_begin="115" line_end="115" rule="503"/>
-            <variables col_begin="23" col_end="30" count="1" line_begin="115" line_end="115">
+            <attr-spec attr="811" attrKeyword="intent" col_begin="9" col_end="15" line_begin="119" line_end="119" rule="503"/>
+            <variables col_begin="23" col_end="30" count="1" line_begin="119" line_end="119">
               <entity-decl-list__begin addendum="list-begin" rule="503008"/>
-              <variable col_begin="23" col_end="30" hasInitialValue="false" line_begin="115" line_end="115" name="b_teste">
-                <entity-decl col_begin="23" col_end="30" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="false" id="b_teste" line_begin="115" line_end="115" rule="503008"/>
+              <variable col_begin="23" col_end="30" hasInitialValue="false" line_begin="119" line_end="119" name="b_teste">
+                <entity-decl col_begin="23" col_end="30" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="false" id="b_teste" line_begin="119" line_end="119" rule="503008"/>
               </variable>
               <variable/>
               <entity-decl-list addendum="list" count="1" rule="503008"/>
             </variables>
-            <type-declaration-stmt col_begin="30" col_end="31" eos="&#10;" line_begin="115" line_end="115" numAttributes="1" rule="501"/>
+            <type-declaration-stmt col_begin="30" col_end="31" eos="&#10;" line_begin="119" line_end="119" numAttributes="1" rule="501"/>
           </declaration>
           <declaration-construct rule="207"/>
-          <comment col_begin="3" col_end="20" line_begin="117" line_end="117" text="!Local variables:"/>
-          <declaration col_begin="3" col_end="43" line_begin="118" line_end="118" type="variable">
-            <type col_begin="3" col_end="7" hasAttributes="false" hasKind="false" hasLength="false" line_begin="118" line_end="118" name="real" type="intrinsic">
-              <intrinsic-type-spec col_begin="3" col_end="7" hasKindSelector="false" keyword1="real" keyword2="" line_begin="118" line_end="118" rule="403" type="401"/>
+          <comment col_begin="3" col_end="20" line_begin="121" line_end="121" text="!Local variables:"/>
+          <declaration col_begin="3" col_end="43" line_begin="122" line_end="122" type="variable">
+            <type col_begin="3" col_end="7" hasAttributes="false" hasKind="false" hasLength="false" line_begin="122" line_end="122" name="real" type="intrinsic">
+              <intrinsic-type-spec col_begin="3" col_end="7" hasKindSelector="false" keyword1="real" keyword2="" line_begin="122" line_end="122" rule="403" type="401"/>
               <declaration-type-spec rule="502" type="500" udtKeyword=""/>
             </type>
-            <variables col_begin="11" col_end="23" count="1" line_begin="118" line_end="118">
+            <variables col_begin="11" col_end="23" count="1" line_begin="122" line_end="122">
               <entity-decl-list__begin addendum="list-begin" rule="503008"/>
-              <variable col_begin="11" col_end="23" hasInitialValue="true" line_begin="118" line_end="118" name="a_Teste">
-                <initial-value col_begin="21" col_end="23" line_begin="118" line_end="118">
-                  <literal col_begin="21" col_end="23" line_begin="118" line_end="118" type="int" value="23">
-                    <int-literal-constant col_begin="21" col_end="23" digitString="23" kindParam="" line_begin="118" line_end="118" rule="406"/>
+              <variable col_begin="11" col_end="23" hasInitialValue="true" line_begin="122" line_end="122" name="a_Teste">
+                <initial-value col_begin="21" col_end="23" line_begin="122" line_end="122">
+                  <literal col_begin="21" col_end="23" line_begin="122" line_end="122" type="int" value="23">
+                    <int-literal-constant col_begin="21" col_end="23" digitString="23" kindParam="" line_begin="122" line_end="122" rule="406"/>
                     <literal-constant rule="306"/>
                     <primary rule="701"/>
                   </literal>
                   <initialization hasExpr="true" hasNullInit="false" rule="506"/>
                 </initial-value>
-                <entity-decl col_begin="11" col_end="18" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="true" id="a_Teste" line_begin="118" line_end="118" rule="503008"/>
+                <entity-decl col_begin="11" col_end="18" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="true" id="a_Teste" line_begin="122" line_end="122" rule="503008"/>
               </variable>
               <variable/>
               <entity-decl-list addendum="list" count="1" rule="503008"/>
             </variables>
-            <type-declaration-stmt col_begin="42" col_end="43" eos="&#10;" line_begin="118" line_end="118" numAttributes="0" rule="501"/>
+            <type-declaration-stmt col_begin="42" col_end="43" eos="&#10;" line_begin="122" line_end="122" numAttributes="0" rule="501"/>
           </declaration>
-          <comment col_begin="24" col_end="42" line_begin="118" line_end="118" text="!teste xml -&gt;&gt; 115"/>
+          <comment col_begin="24" col_end="42" line_begin="122" line_end="122" text="!teste xml -&gt;&gt; 115"/>
           <declaration-construct rule="207"/>
-          <declaration col_begin="3" col_end="29" line_begin="120" line_end="120" type="variable">
-            <type col_begin="3" col_end="19" hasAttributes="true" hasKind="false" hasLength="false" line_begin="120" line_end="120" name="character" type="intrinsic">
-              <type-attributes col_begin="13" col_end="19" line_begin="120" line_end="120">
-                <length col_begin="17" col_end="19" line_begin="120" line_end="120">
-                  <literal col_begin="17" col_end="19" line_begin="120" line_end="120" type="int" value="20">
-                    <int-literal-constant col_begin="17" col_end="19" digitString="20" kindParam="" line_begin="120" line_end="120" rule="406"/>
+          <declaration col_begin="3" col_end="29" line_begin="124" line_end="124" type="variable">
+            <type col_begin="3" col_end="19" hasAttributes="true" hasKind="false" hasLength="false" line_begin="124" line_end="124" name="character" type="intrinsic">
+              <type-attributes col_begin="13" col_end="19" line_begin="124" line_end="124">
+                <length col_begin="17" col_end="19" line_begin="124" line_end="124">
+                  <literal col_begin="17" col_end="19" line_begin="124" line_end="124" type="int" value="20">
+                    <int-literal-constant col_begin="17" col_end="19" digitString="20" kindParam="" line_begin="124" line_end="124" rule="406"/>
                     <literal-constant rule="306"/>
                     <primary rule="701"/>
                   </literal>
                   <type-param-value hasAsterisk="false" hasColon="false" hasExpr="true" rule="402"/>
                 </length>
-                <char-selector col_begin="13" col_end="16" hasAsterisk="false" kindOrLen1="302" kindOrLen2="300" line_begin="120" line_end="120" rule="424" tk1="len" tk2=""/>
+                <char-selector col_begin="13" col_end="16" hasAsterisk="false" kindOrLen1="302" kindOrLen2="300" line_begin="124" line_end="124" rule="424" tk1="len" tk2=""/>
               </type-attributes>
-              <intrinsic-type-spec col_begin="3" col_end="12" hasKindSelector="true" keyword1="character" keyword2="" line_begin="120" line_end="120" rule="403" type="405"/>
+              <intrinsic-type-spec col_begin="3" col_end="12" hasKindSelector="true" keyword1="character" keyword2="" line_begin="124" line_end="124" rule="403" type="405"/>
               <declaration-type-spec rule="502" type="500" udtKeyword=""/>
             </type>
-            <variables col_begin="24" col_end="28" count="1" line_begin="120" line_end="120">
+            <variables col_begin="24" col_end="28" count="1" line_begin="124" line_end="124">
               <entity-decl-list__begin addendum="list-begin" rule="503008"/>
-              <variable col_begin="24" col_end="28" hasInitialValue="false" line_begin="120" line_end="120" name="nome">
-                <entity-decl col_begin="24" col_end="28" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="false" id="nome" line_begin="120" line_end="120" rule="503008"/>
+              <variable col_begin="24" col_end="28" hasInitialValue="false" line_begin="124" line_end="124" name="nome">
+                <entity-decl col_begin="24" col_end="28" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="false" id="nome" line_begin="124" line_end="124" rule="503008"/>
               </variable>
               <variable/>
               <entity-decl-list addendum="list" count="1" rule="503008"/>
             </variables>
-            <type-declaration-stmt col_begin="28" col_end="29" eos="&#10;" line_begin="120" line_end="120" numAttributes="0" rule="501"/>
+            <type-declaration-stmt col_begin="28" col_end="29" eos="&#10;" line_begin="124" line_end="124" numAttributes="0" rule="501"/>
           </declaration>
           <declaration-construct rule="207"/>
-          <declaration col_begin="3" col_end="62" line_begin="122" line_end="122" type="variable">
-            <type col_begin="3" col_end="19" hasAttributes="true" hasKind="false" hasLength="false" line_begin="122" line_end="122" name="character" type="intrinsic">
-              <type-attributes col_begin="13" col_end="19" line_begin="122" line_end="122">
-                <length col_begin="17" col_end="19" line_begin="122" line_end="122">
-                  <literal col_begin="17" col_end="19" line_begin="122" line_end="122" type="int" value="20">
-                    <int-literal-constant col_begin="17" col_end="19" digitString="20" kindParam="" line_begin="122" line_end="122" rule="406"/>
+          <declaration col_begin="3" col_end="62" line_begin="126" line_end="126" type="variable">
+            <type col_begin="3" col_end="19" hasAttributes="true" hasKind="false" hasLength="false" line_begin="126" line_end="126" name="character" type="intrinsic">
+              <type-attributes col_begin="13" col_end="19" line_begin="126" line_end="126">
+                <length col_begin="17" col_end="19" line_begin="126" line_end="126">
+                  <literal col_begin="17" col_end="19" line_begin="126" line_end="126" type="int" value="20">
+                    <int-literal-constant col_begin="17" col_end="19" digitString="20" kindParam="" line_begin="126" line_end="126" rule="406"/>
                     <literal-constant rule="306"/>
                     <primary rule="701"/>
                   </literal>
                   <type-param-value hasAsterisk="false" hasColon="false" hasExpr="true" rule="402"/>
                 </length>
-                <char-selector col_begin="13" col_end="16" hasAsterisk="false" kindOrLen1="302" kindOrLen2="300" line_begin="122" line_end="122" rule="424" tk1="len" tk2=""/>
+                <char-selector col_begin="13" col_end="16" hasAsterisk="false" kindOrLen1="302" kindOrLen2="300" line_begin="126" line_end="126" rule="424" tk1="len" tk2=""/>
               </type-attributes>
-              <intrinsic-type-spec col_begin="3" col_end="12" hasKindSelector="true" keyword1="character" keyword2="" line_begin="122" line_end="122" rule="403" type="405"/>
+              <intrinsic-type-spec col_begin="3" col_end="12" hasKindSelector="true" keyword1="character" keyword2="" line_begin="126" line_end="126" rule="403" type="405"/>
               <declaration-type-spec rule="502" type="500" udtKeyword=""/>
             </type>
-            <variables col_begin="24" col_end="61" count="3" line_begin="122" line_end="122">
+            <variables col_begin="24" col_end="61" count="3" line_begin="126" line_end="126">
               <entity-decl-list__begin addendum="list-begin" rule="503008"/>
-              <variable col_begin="24" col_end="31" hasInitialValue="false" line_begin="122" line_end="122" name="name_lw">
-                <entity-decl col_begin="24" col_end="31" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="false" id="name_lw" line_begin="122" line_end="122" rule="503008"/>
+              <variable col_begin="24" col_end="31" hasInitialValue="false" line_begin="126" line_end="126" name="name_lw">
+                <entity-decl col_begin="24" col_end="31" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="false" id="name_lw" line_begin="126" line_end="126" rule="503008"/>
               </variable>
-              <variable col_begin="33" col_end="43" hasInitialValue="false" line_begin="122" line_end="122" name="NAME_UPPER">
-                <entity-decl col_begin="33" col_end="43" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="false" id="NAME_UPPER" line_begin="122" line_end="122" rule="503008"/>
+              <variable col_begin="33" col_end="43" hasInitialValue="false" line_begin="126" line_end="126" name="NAME_UPPER">
+                <entity-decl col_begin="33" col_end="43" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="false" id="NAME_UPPER" line_begin="126" line_end="126" rule="503008"/>
               </variable>
-              <variable col_begin="45" col_end="61" hasInitialValue="false" line_begin="122" line_end="122" name="Name_first_upper">
-                <entity-decl col_begin="45" col_end="61" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="false" id="Name_first_upper" line_begin="122" line_end="122" rule="503008"/>
+              <variable col_begin="45" col_end="61" hasInitialValue="false" line_begin="126" line_end="126" name="Name_first_upper">
+                <entity-decl col_begin="45" col_end="61" hasArraySpec="false" hasCharLength="false" hasCoarraySpec="false" hasInitialization="false" id="Name_first_upper" line_begin="126" line_end="126" rule="503008"/>
               </variable>
               <variable/>
               <entity-decl-list addendum="list" count="3" rule="503008"/>
             </variables>
-            <type-declaration-stmt col_begin="61" col_end="62" eos="&#10;" line_begin="122" line_end="122" numAttributes="0" rule="501"/>
+            <type-declaration-stmt col_begin="61" col_end="62" eos="&#10;" line_begin="126" line_end="126" numAttributes="0" rule="501"/>
           </declaration>
           <declaration-construct rule="207"/>
           <declaration/>
           <specification-part numDeclConstructs="6" numImplicitStmts="1" numImportStmts="0" numUseStmts="0" rule="204"/>
         </specification>
-        <comment col_begin="3" col_end="58" line_begin="123" line_end="123" text="!namelist /TESTE/ name_lw, NAME_UPPER, Name_first_upper"/>
-        <comment col_begin="3" col_end="18" line_begin="125" line_end="125" text="!Code:  -&gt;&gt; 121"/>
-        <statement col_begin="3" col_end="25" line_begin="126" line_end="126">
-          <assignment col_begin="3" col_end="25" line_begin="126" line_end="126">
-            <target col_begin="3" col_end="10" line_begin="126" line_end="126">
-              <name col_begin="3" col_end="10" hasSubscripts="false" id="name_lw" line_begin="126" line_end="126" type="variable">
-                <part-ref col_begin="3" col_end="10" hasImageSelector="false" hasSectionSubscriptList="false" id="name_lw" line_begin="126" line_end="126" rule="613"/>
+        <comment col_begin="3" col_end="58" line_begin="127" line_end="127" text="!namelist /TESTE/ name_lw, NAME_UPPER, Name_first_upper"/>
+        <comment col_begin="3" col_end="18" line_begin="129" line_end="129" text="!Code:  -&gt;&gt; 121"/>
+        <statement col_begin="3" col_end="25" line_begin="130" line_end="130">
+          <assignment col_begin="3" col_end="25" line_begin="130" line_end="130">
+            <target col_begin="3" col_end="10" line_begin="130" line_end="130">
+              <name col_begin="3" col_end="10" hasSubscripts="false" id="name_lw" line_begin="130" line_end="130" type="variable">
+                <part-ref col_begin="3" col_end="10" hasImageSelector="false" hasSectionSubscriptList="false" id="name_lw" line_begin="130" line_end="130" rule="613"/>
                 <data-ref numPartRef="1" rule="612"/>
                 <designator hasSubstringRange="false" rule="603"/>
                 <variable rule="601"/>
               </name>
             </target>
-            <value col_begin="13" col_end="25" line_begin="126" line_end="126">
-              <literal col_begin="13" col_end="25" line_begin="126" line_end="126" type="char" value="&quot;lower name&quot;">
-                <char-literal-constant col_begin="13" col_end="25" digitString-kind-param="" identifier-kind-param="" line_begin="126" line_end="126" rule="427" str="&quot;lower name&quot;"/>
+            <value col_begin="13" col_end="25" line_begin="130" line_end="130">
+              <literal col_begin="13" col_end="25" line_begin="130" line_end="130" type="char" value="&quot;lower name&quot;">
+                <char-literal-constant col_begin="13" col_end="25" digitString-kind-param="" identifier-kind-param="" line_begin="130" line_end="130" rule="427" str="&quot;lower name&quot;"/>
                 <literal-constant rule="306"/>
                 <primary rule="701"/>
               </literal>
@@ -1169,23 +1239,23 @@
           </assignment>
           <action-stmt rule="214"/>
         </statement>
-        <comment col_begin="3" col_end="28" line_begin="127" line_end="127" text="!NAME_UPPER = &quot;KLCLAUDIO&quot;"/>
-        <comment col_begin="3" col_end="34" line_begin="128" line_end="128" text="!Name_first_upper = &quot;Klclaudio&quot;"/>
-        <comment col_begin="3" col_end="18" line_begin="129" line_end="129" text="!write(6,TESTE)"/>
-        <statement col_begin="3" col_end="17" line_begin="131" line_end="131">
+        <comment col_begin="3" col_end="28" line_begin="131" line_end="131" text="!NAME_UPPER = &quot;KLCLAUDIO&quot;"/>
+        <comment col_begin="3" col_end="34" line_begin="132" line_end="132" text="!Name_first_upper = &quot;Klclaudio&quot;"/>
+        <comment col_begin="3" col_end="18" line_begin="133" line_end="133" text="!write(6,TESTE)"/>
+        <statement col_begin="3" col_end="17" line_begin="135" line_end="135">
           <executable-construct rule="213"/>
-          <assignment col_begin="3" col_end="17" line_begin="131" line_end="131">
-            <target col_begin="3" col_end="10" line_begin="131" line_end="131">
-              <name col_begin="3" col_end="10" hasSubscripts="false" id="a_Teste" line_begin="131" line_end="131" type="variable">
-                <part-ref col_begin="3" col_end="10" hasImageSelector="false" hasSectionSubscriptList="false" id="a_Teste" line_begin="131" line_end="131" rule="613"/>
+          <assignment col_begin="3" col_end="17" line_begin="135" line_end="135">
+            <target col_begin="3" col_end="10" line_begin="135" line_end="135">
+              <name col_begin="3" col_end="10" hasSubscripts="false" id="a_Teste" line_begin="135" line_end="135" type="variable">
+                <part-ref col_begin="3" col_end="10" hasImageSelector="false" hasSectionSubscriptList="false" id="a_Teste" line_begin="135" line_end="135" rule="613"/>
                 <data-ref numPartRef="1" rule="612"/>
                 <designator hasSubstringRange="false" rule="603"/>
                 <variable rule="601"/>
               </name>
             </target>
-            <value col_begin="13" col_end="17" line_begin="131" line_end="131">
-              <literal col_begin="13" col_end="17" line_begin="131" line_end="131" type="real" value="3.45">
-                <real-literal-constant col_begin="13" col_end="17" kindParam="" line_begin="131" line_end="131" realConstant="3.45" rule="417"/>
+            <value col_begin="13" col_end="17" line_begin="135" line_end="135">
+              <literal col_begin="13" col_end="17" line_begin="135" line_end="135" type="real" value="3.45">
+                <real-literal-constant col_begin="13" col_end="17" kindParam="" line_begin="135" line_end="135" realConstant="3.45" rule="417"/>
                 <literal-constant rule="306"/>
                 <primary rule="701"/>
               </literal>
@@ -1194,21 +1264,21 @@
           </assignment>
           <action-stmt rule="214"/>
         </statement>
-        <statement col_begin="3" col_end="19" line_begin="133" line_end="133">
+        <statement col_begin="3" col_end="19" line_begin="137" line_end="137">
           <executable-construct rule="213"/>
           <execution-part-construct rule="209"/>
-          <assignment col_begin="3" col_end="19" line_begin="133" line_end="133">
-            <target col_begin="3" col_end="10" line_begin="133" line_end="133">
-              <name col_begin="3" col_end="10" hasSubscripts="false" id="a_teste" line_begin="133" line_end="133" type="variable">
-                <part-ref col_begin="3" col_end="10" hasImageSelector="false" hasSectionSubscriptList="false" id="a_teste" line_begin="133" line_end="133" rule="613"/>
+          <assignment col_begin="3" col_end="19" line_begin="137" line_end="137">
+            <target col_begin="3" col_end="10" line_begin="137" line_end="137">
+              <name col_begin="3" col_end="10" hasSubscripts="false" id="a_teste" line_begin="137" line_end="137" type="variable">
+                <part-ref col_begin="3" col_end="10" hasImageSelector="false" hasSectionSubscriptList="false" id="a_teste" line_begin="137" line_end="137" rule="613"/>
                 <data-ref numPartRef="1" rule="612"/>
                 <designator hasSubstringRange="false" rule="603"/>
                 <variable rule="601"/>
               </name>
             </target>
-            <value col_begin="12" col_end="19" line_begin="133" line_end="133">
-              <name col_begin="12" col_end="19" hasSubscripts="false" id="b_teste" line_begin="133" line_end="133" type="ambiguous">
-                <part-ref col_begin="12" col_end="19" hasImageSelector="false" hasSectionSubscriptList="false" id="b_teste" line_begin="133" line_end="133" rule="613"/>
+            <value col_begin="12" col_end="19" line_begin="137" line_end="137">
+              <name col_begin="12" col_end="19" hasSubscripts="false" id="b_teste" line_begin="137" line_end="137" type="ambiguous">
+                <part-ref col_begin="12" col_end="19" hasImageSelector="false" hasSectionSubscriptList="false" id="b_teste" line_begin="137" line_end="137" rule="613"/>
                 <data-ref numPartRef="1" rule="612"/>
                 <designator-or-func-ref rule="-3"/>
                 <primary rule="701"/>
@@ -1218,21 +1288,21 @@
           </assignment>
           <action-stmt rule="214"/>
         </statement>
-        <statement col_begin="3" col_end="16" line_begin="134" line_end="134">
+        <statement col_begin="3" col_end="16" line_begin="138" line_end="138">
           <executable-construct rule="213"/>
           <execution-part-construct rule="209"/>
-          <assignment col_begin="3" col_end="16" line_begin="134" line_end="134">
-            <target col_begin="3" col_end="7" line_begin="134" line_end="134">
-              <name col_begin="3" col_end="7" hasSubscripts="false" id="nome" line_begin="134" line_end="134" type="variable">
-                <part-ref col_begin="3" col_end="7" hasImageSelector="false" hasSectionSubscriptList="false" id="nome" line_begin="134" line_end="134" rule="613"/>
+          <assignment col_begin="3" col_end="16" line_begin="138" line_end="138">
+            <target col_begin="3" col_end="7" line_begin="138" line_end="138">
+              <name col_begin="3" col_end="7" hasSubscripts="false" id="nome" line_begin="138" line_end="138" type="variable">
+                <part-ref col_begin="3" col_end="7" hasImageSelector="false" hasSectionSubscriptList="false" id="nome" line_begin="138" line_end="138" rule="613"/>
                 <data-ref numPartRef="1" rule="612"/>
                 <designator hasSubstringRange="false" rule="603"/>
                 <variable rule="601"/>
               </name>
             </target>
-            <value col_begin="10" col_end="16" line_begin="134" line_end="134">
-              <literal col_begin="10" col_end="16" line_begin="134" line_end="134" type="char" value="&quot;Luiz&quot;">
-                <char-literal-constant col_begin="10" col_end="16" digitString-kind-param="" identifier-kind-param="" line_begin="134" line_end="134" rule="427" str="&quot;Luiz&quot;"/>
+            <value col_begin="10" col_end="16" line_begin="138" line_end="138">
+              <literal col_begin="10" col_end="16" line_begin="138" line_end="138" type="char" value="&quot;Luiz&quot;">
+                <char-literal-constant col_begin="10" col_end="16" digitString-kind-param="" identifier-kind-param="" line_begin="138" line_end="138" rule="427" str="&quot;Luiz&quot;"/>
                 <literal-constant rule="306"/>
                 <primary rule="701"/>
               </literal>
@@ -1247,12 +1317,12 @@
           <execution-part rule="208"/>
         </statement>
       </body>
-      <end-subroutine-stmt col_begin="0" col_end="19" eos="&#10;" keyword1="end" keyword2="subroutine" line_begin="136" line_end="136" name="ifx" rule="1234"/>
+      <end-subroutine-stmt col_begin="0" col_end="19" eos="&#10;" keyword1="end" keyword2="subroutine" line_begin="140" line_end="140" name="ifx" rule="1234"/>
     </subroutine>
-    <module col_begin="0" col_end="11" line_begin="138" line_end="140" name="test">
+    <module col_begin="0" col_end="11" line_begin="142" line_end="144" name="test">
       <module-stmt__begin addendum="begin" rule="1105"/>
       <header/>
-      <module-stmt col_begin="0" col_end="12" eos="&#10;" id="test" line_begin="138" line_end="138" moduleKeyword="module" rule="1105"/>
+      <module-stmt col_begin="0" col_end="12" eos="&#10;" id="test" line_begin="142" line_end="142" moduleKeyword="module" rule="1105"/>
       <body>
         <specification declarations="0" implicits="0" imports="0" uses="0">
           <declaration/>
@@ -1261,9 +1331,9 @@
         <statement/>
       </body>
       <members/>
-      <end-module-stmt col_begin="0" col_end="11" endKeyword="end" eos="&#10;" id="" line_begin="140" line_end="140" moduleKeyword="module" rule="1106"/>
+      <end-module-stmt col_begin="0" col_end="11" endKeyword="end" eos="&#10;" id="" line_begin="144" line_end="144" moduleKeyword="module" rule="1106"/>
       <module rule="1104"/>
     </module>
-    <end-of-file filename="../code_under_test/teste.F90" path="/home/klclaudio/Documents/Monan/CodeReview/QA/src/../code_under_test/teste.F90" rule="-2"/>
+    <end-of-file filename="../code_under_test/teste.F90" path="/home/kclaudio/Documents/Monan/CodeReview/QA/src/../code_under_test/teste.F90" rule="-2"/>
   </file>
 </ofp>
