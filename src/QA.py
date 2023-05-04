@@ -53,6 +53,23 @@ def is_snake_case(word):
    return True
 
 
+def find_file_name(full_file_name):
+   list_names = full_file_name.split("/")
+   for lst in list_names:
+      if lst.find(".F90") != -1:
+         file_name = lst 
+      elif lst.find(".f90") != -1:
+         file_name = lst
+   return file_name
+
+
+def verify_file_name (points, file_name):
+   if file_name.find(".F90") == -1:
+      print("Rule XXX file extention - .F90")  #verificar regra
+      points = points
+   return(points)
+
+
 def is_upper_snake_case(word):
    if not word:
       return False
@@ -281,8 +298,50 @@ def verify_colapsed_keywords(points, used_keywords):
       k = k + 1
       # uso do contador evita erro na numeração das linhas qdo há chaves repetidas
    return points
-       
 
+
+#verificar escrita "namemodule"
+def verify_module_name(points, full_file_name, root):  
+   file_name = find_file_name(full_file_name)       
+  
+   #full_file_name = start-of-file filename ="../code_under_test/teste.F90"
+   #full_file_name = "../code_under_test/teste.F90"
+   
+
+   # filename = ""
+   # list_names = full_file_name.split("/")
+   # for lst in list_names:
+   #    if lst.find(".F90") != -1:
+   #       filename = lst 
+   #    elif lst.find(".f90") != -1:
+   #       filename = lst
+   #       print("file extention .f90")  #verificar regra
+   
+   k = 0
+   module_name = ""
+   for mod in root.iter("module-stmt"):
+      print("\n\nInspecionando a arquivo - módulo", file_name)
+      print("---------------------------------------------------------")
+      print("module line begin = ", int(mod.get("line_begin")))
+      print("---------------------------------------------------------")    
+      k = k + 1
+      module_name = mod.get("id") #"Teste"
+      print("module name: ", module_name)
+   
+   if k > 1:
+      print ("Rule 4.32 module > 1")
+      points = points + 1.0
+   #elif k == 1:
+   if file_name.find("mod") == -1:
+      print ("Rule 4.32 module filename")
+      points = points + 1.0
+   if module_name.find("mod") == -1:
+      print ("Rule 4.32 module name")
+      points = points + 1.0
+
+      print("Penalties in subroutine :", points)
+   return points
+      
 #------------------------------------------------------------------------------           
 if __name__ == '__main__':
 
@@ -291,10 +350,10 @@ if __name__ == '__main__':
    root = tree.getroot() # Pega a raiz do xml
 
    for file in root.iter("file"): #Pega o nome e caminho do arquivo fonte
-      file_name = file.get("path")
+      full_file_name = file.get("path")
    
    # Abre e lê o arquivo fonte
-   fn = open(file_name, "r")
+   fn = open(full_file_name, "r")
    lines = fn.readlines()
    lines_work = []
    c_lines_work = []
@@ -386,6 +445,9 @@ if __name__ == '__main__':
    
    # Inicio do processo com a análise das subrotinas
    # Percorre a árvore para as declarações de subrotina
+   points = 0.0
+   points = verify_module_name(points, full_file_name, root)
+
    for sub in root.iter("subroutine"):
       print("\n\nInspecionando a subrotina", sub.get("name"))
       print("---------------------------------------------------------")
@@ -405,6 +467,7 @@ if __name__ == '__main__':
       points = keywords_in_line(sub, keywords, points)
       points = verify_col_end(sub, points)
       points = verify_colapsed_keywords(points,used_keywords)
+      
                         
       # Verifica a primeira Rule de nome
       if not is_camel_case(sub.get("name")): #4.8 camelCase
@@ -605,6 +668,7 @@ if __name__ == '__main__':
          print ("Rule 4.17 : variable procedure : subroutine", sub.get("name"))
          points = points + 1     
       if p_src_name == FALSE:
+         file_name = find_file_name(full_file_name)
          print ("Rule 4.17 : variable source :", file_name)  # line   
          points = points + 1
             
