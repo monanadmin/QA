@@ -300,23 +300,8 @@ def verify_colapsed_keywords(points, used_keywords):
    return points
 
 
-#verificar escrita "namemodule"
 def verify_module_name(points, full_file_name, root):  
-   file_name = find_file_name(full_file_name)       
-  
-   #full_file_name = start-of-file filename ="../code_under_test/teste.F90"
-   #full_file_name = "../code_under_test/teste.F90"
-   
-
-   # filename = ""
-   # list_names = full_file_name.split("/")
-   # for lst in list_names:
-   #    if lst.find(".F90") != -1:
-   #       filename = lst 
-   #    elif lst.find(".f90") != -1:
-   #       filename = lst
-   #       print("file extention .f90")  #verificar regra
-   
+   file_name = find_file_name(full_file_name)        
    k = 0
    module_name = ""
    for mod in root.iter("module-stmt"):
@@ -339,8 +324,8 @@ def verify_module_name(points, full_file_name, root):
       print ("Rule 4.32 module name")
       points = points + 1.0
 
-      print("Penalties in subroutine :", points)
-   return points
+      print("Penalties in module :", points)
+   return ()
       
 #------------------------------------------------------------------------------           
 if __name__ == '__main__':
