@@ -142,6 +142,8 @@ if __name__ == '__main__':
       points = keywords_in_line(sub, keywords, points)
       points = verify_col_end(sub, points)
       points = verify_colapsed_keywords(points,used_keywords)
+
+      points = verify_deallocate(sub, points)
       
                         
       # Verifica a primeira Rule de nome
