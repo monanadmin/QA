@@ -31,7 +31,7 @@ subroutine tst_1(A1,x)
    !subroutine name
 
    !Variables (input, output, inout)
-   real, intent(in) :: A1(:)
+   real, intent(inout) :: A1(:)
    integer, intent(in) :: x
    integer initiate_declaration=10
    
@@ -83,7 +83,8 @@ subroutine tst_1(A1,x)
 end subroutine tst_1
 
 
-subroutine ifx(b_teste)
+subroutine ifx(  b_teste &
+              ,c_teste)
    !! ## teste
    !!
    !! Author: autor
@@ -116,11 +117,12 @@ subroutine ifx(b_teste)
    !! constante geométrica pi
 
    !Variables (input, output, inout)
-   real, intent(in) :: b_teste
+   real, intent(in) :: b_teste, c_Teste
 
-   !Local variables:
-   real :: a_Teste = 23 !teste xml ->> 115
-
+   !Local variables: 
+   real :: a_Teste = 23
+   integer, allocatable :: x_alloc(:) !teste xml ->> 115
+   integer, allocatable :: y_alloc(:)
    character(len=20) :: nome
 
    character(len=20) :: name_lw, NAME_UPPER, Name_first_upper
@@ -132,11 +134,27 @@ subroutine ifx(b_teste)
    !Name_first_upper = "Klclaudio"
    !write(6,TESTE)
 
-   a_Teste = 3.45
+   a_Teste = 3.45 
+
+   b_Teste = 3.45 + &
+             3.50
+
+   c_Teste = 5.0 &
+           + 7.0        
 
    a_teste= b_teste
    nome = "Luiz"
+   
+   
+   if (.not.allocated(x_alloc)) allocate(x_alloc)
+   
+   if (.not.allocated(y_alloc)) allocate(y_alloc)
+   
+!   if (allocated(y_alloc)) deallocate(y_alloc)
 
+   if (allocated(x_alloc)) deallocate(x_alloc)
+
+   
 end subroutine ifx
 
 module test

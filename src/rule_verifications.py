@@ -293,6 +293,7 @@ def verify_module_name(points, full_file_name, root):
    file_name = find_file_name(full_file_name)        
    k = 0
    module_name = ""
+
    for mod in root.iter("module-stmt"):
       print("\n\nInspecionando a arquivo - módulo", file_name)
       print("---------------------------------------------------------")
@@ -315,3 +316,138 @@ def verify_module_name(points, full_file_name, root):
 
       print("Penalties in module :", points)
    return ()
+
+
+ # Para casos em que o conteúdo ao fim da linha é um string deve-se dividi-lo 
+ # usando a concatenação de strings (“//”) e usar a continuação de linha (“&”).
+
+def string_lines(sub, points):
+#rule 22/4.24- mudança de linha por string "&" ao final da linha  e "//" na continuação
+
+   col = []
+   key_tree = ["statement"]#, "declaration" ]
+   
+   # for verif in key_tree : 
+   #    for col_count in sub.iter(verif):   
+   #       if col_count.get("col_end") != None:
+   #          if int(col_count.get("col_end")) >= 80 and int(col_count.get("col_end")) < 132:
+   #             col.append(int(col_count.get("col_end")))    
+   #             print('Rule 4.21 : size col >= 80 < 132: line', col_count.get("line_begin") )
+   #             points = points + 1.0
+   #          elif int(col_count.get("col_end")) >= 132:
+   #             col.append(int(col_count.get("col_end")))
+   #             print('Rule 4.21.1 : size col > 132: line', col_count.get("line_begin") )
+   points = points + 0.5   
+   # return points
+   return(points)
+
+
+def param_equation_lines(sub, points):
+#rule 4.23 4.25
+# assigment: mudança de linha usando "&" em equações e parametros não são documentada pelo xml
+# precisa maiores análises
+
+   points = points + 1.0  
+   return()
+
+
+def inout_param(sub, points):
+# rule 4.27 
+# no xml as chaves das operações são: <target> = <value>
+# parametro de entrada que está em target -> saida
+# parametro de entrada que está em <value> ->  entrada
+# parametro de entrada que está em <target> e <value> -> entrada e saida
+
+   
+   points = points + 1.0  
+   return()
+
+
+def verify_deallocate(sub,points):
+   
+   deallocate_list = {}
+   allocated_list = {}
+   line = []
+   col = []
+   id = []
+
+   for deal in sub.iter("deallocate"):
+      line.append(int(deal.get("line_begin")))
+      col.append(int(deal.get("col_begin")))
+      id.append(deal.get("id"))
+      deal_exist = True 
+   deallocate_list.update({"line":line, "col_begin":col, "id":id})  
+   print(deallocate_list)
+
+   for aloc in sub.iter("allocate-stmt"):
+      line.append(int(aloc.get("line_begin")))
+      col.append(int(aloc.get("col_begin")))
+      id.append(aloc.get("id")) 
+      aloc_exist = True
+   allocated_list.update({"line":line, "col_begin":col, "id":id})  
+   
+   #
+   if aloc_exist and deal_exist:
+      for aloc in allocated_list:
+          if aloc not in deallocate_list:
+             print('Rule XXX deallocate line": ', line)
+             points = points + 1.0
+   
+   return(points)
+
+
+def verify_allocate(sub,points):
+   
+   deallocated_list = {}
+   allocated_list = {}
+   line = []
+   col = []
+   id = []
+   n_alloc = 0
+
+   #encontra allocatables
+   for dec in sub.iter ("declaration"):
+      #print("FindAllocation", dec.get("line_begin"))
+      allocatable = False
+      for alloc in dec.iter("attribute-allocatable"):
+         n_alloc = n_alloc + 1 
+         #print( n_alloc, alloc.get("line_begin") )
+         allocatable = True
+      if allocatable == True:
+          for var in dec.iter ("variable"):
+             print("Allocatable: ", var.get("name"))
+          
+   #encontra allocates
+   for aloc in sub.iter("allocate"):
+       line.append(int(aloc.get("line_begin")))
+       col.append(int(aloc.get("col_begin")))
+       #id.append(aloc.get("id")) 
+       for nam in aloc.iter("name"):
+          id.append(nam.get("id")) 
+   allocated_list.update({"line":line, "col_begin":col, "id":id})  
+
+   #encontra deallocates       
+   line = []
+   col = []
+   id = []
+   for deal in sub.iter("deallocate"):
+       line.append(int(deal.get("line_begin")))
+       col.append(int(deal.get("col_begin")))
+       #id.append(deal.get("name")) 
+       for nam in deal.iter("name"):
+          id.append(nam.get("id")) 
+   deallocated_list.update({"line":line, "col_begin":col, "id":id})  
+   print (allocated_list)
+   # if not allocated_list["id"]==[]:
+   #    if not allocated_list["id"] == deallocated_list["id"]:
+   #       print('Rule XXX deallocate line": ', allocated_list["line"])
+   #       points = points + 1.0
+   
+   # compara allocates e deallocates   
+   for k in allocated_list ["id"]:
+      if k not in deallocated_list["id"]:
+         print('Rule XXX deallocate line": ', allocated_list["line"])
+         points = points + 1.0
+ 
+   return(points)    
+

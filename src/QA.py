@@ -6,14 +6,14 @@
 from operator import truediv
 from pickle import FALSE, TRUE
 import xml.etree.ElementTree as ET
-
+from rule_verifications import*
 #import open_fortran_parser
 
       
 #------------------------------------------------------------------------------           
 if __name__ == '__main__':
 
-   from rule_verifications import* 
+    
    # read the files and get fields
    tree = ET.parse('../xml/saida.xml')
    root = tree.getroot() # Pega a raiz do xml
@@ -143,6 +143,10 @@ if __name__ == '__main__':
       points = verify_col_end(sub, points)
       points = verify_colapsed_keywords(points,used_keywords)
       
+      print("Dealloacate ---->")
+#      points = verify_deallocate(sub,points)
+      points = verify_allocate(sub,points)
+      print("Fim Dealloacate ---->")
                         
       # Verifica a primeira Rule de nome
       if not is_camel_case(sub.get("name")): #4.8 camelCase
