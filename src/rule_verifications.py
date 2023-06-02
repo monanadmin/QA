@@ -318,6 +318,97 @@ def verify_module_name(points, full_file_name, root):
    return ()
 
 
+def param_equation_lines(sub, points):
+#rule 4.23 4.25
+# assigment: mudança de linha usando "&" em equações e parametros não são documentada pelo xml
+# precisa maiores análises
+
+   points = points + 1.0  
+   return()
+
+
+def inout_param(sub, points):
+# rule 4.27 
+# no xml as chaves das operações são: <target> = <value>
+# parametro de entrada que está em target -> saida
+# parametro de entrada que está em <value> ->  entrada
+# parametro de entrada que está em <target> e <value> -> entrada e saida  
+   points = points + 1.0  
+   return()
+
+
+def verify_deallocate(sub,points):
+   
+   deallocated_list = {}
+   allocated_list = {}
+   line = []
+   col = []
+   id = []
+
+   for deal in sub.iter("deallocate-stmt"):
+      print("HERE")
+      line.append(int(deal.get("line_begin")))
+      col.append(int(deal.get("col_begin")))
+      id.append(deal.get("deallocateKeyword")) 
+   deallocated_list.update({"line":line, "col_begin":col, "id":id})  
+   print(deallocated_list)
+
+   for alloc in sub.iter("allocate-stmt"):
+      print("here2")
+      if alloc.get("deallocateKeyword") == True:
+         line.append(int(alloc.get("line_begin")))
+         col.append(int(alloc.get("col_begin")))
+         id.append(alloc.get("deallocateKeyword")) 
+   allocated_list.update({"line":line, "col_begin":col, "id":id})  
+   print("allocated: ", allocated_list)
+   
+   if allocated_list !={}:
+      for deal in deallocated_list.get("line"):
+      #print(deal)
+         if deal not in allocated_list.get("line"):
+            print('Rule XXX deallocate line": ', line)
+            points = points + 1.0
+
+   # for alloc in allocated_list.get("line"):
+   #     #print (alloc)
+   #     if alloc not in deallocated_list:
+   #        print('Rule XXX deallocate line": ', line)
+   #        points = points + 1.0
+         
+   return(points)    
+
+
+def verify_alocate(sub,points):
+   
+   deallocate_list = {}
+   allocated_list = {}
+   line = []
+   col = []
+   id = []
+
+   for deal in sub.iter("deallocate"):
+      line.append(int(deal.get("line_begin")))
+      col.append(int(deal.get("col_begin")))
+      id.append(deal.get("id")) 
+   deallocate_list.update({"line":line, "col_begin":col, "id":id})  
+
+   for alloc in sub.iter("allocate-stmt"):
+      line.append(int(deal.get("line_begin")))
+      col.append(int(deal.get("col_begin")))
+      id.append(deal.get("id")) 
+   allocated_list.update({"line":line, "col_begin":col, "id":id})  
+
+   for deal in deallocate_list:
+       if deal not in allocated_list:
+          print('Rule XXX deallocate line": ', line)
+          points = points + 1.0
+   
+   return(points)    
+
+
+
+
+
  # Para casos em que o conteúdo ao fim da linha é um string deve-se dividi-lo 
  # usando a concatenação de strings (“//”) e usar a continuação de linha (“&”).
 
