@@ -19,36 +19,46 @@ subroutine tst_1(A1,x)
    !! --- 
    !! ** Licence **: Under the terms of the GNU General Public version 3
    !!   <img src="https://www.gnu.org/graphics/gplv3-127x51.png width="63">
-   !!
-   USE mpi
+   !!--------------------------------------------------------------------------------------------
+!teste para tamanho de linha -------------------------------------------------------------------------------------------------------
+   USE mpi;USE modCobvParGF !!------------------------------------------------------------------------------------------------------
 
-   implicit none
+   implicit none ; character(len=*), parameter :: p_procedure_name = 'tst' 
    !Parameters:
-   character(len=*), parameter :: p_procedure_name = 'tst' 
-   !! subroutine name
+   
+   !!
+   
+   !subroutine name
 
    !Variables (input, output, inout)
-   real, intent(in) :: A1(:)
+   real, intent(inout) :: A1(:)
    integer, intent(in) :: x
+   integer initiate_declaration=10
    
    !Local variables:
    integer :: i, ift
 
    !Code:
 
-   open(unit=23, file="teste.txt",status="new",action="write")
-
-   write(23,*) "teste"
+   open(unit=23, file="teste.txt",status="new",action="write");  write(23,*) "teste"
 
    do i=1,x
       A1(i)= A1(i) * 2.0
-   end do
+      do j=1,x
+         A2(j)= A1(j) * 2.0
+      enddo   
+   enddo
 
    IF(x==30) then
       A1(30) = 145.7
    else 
       goto 30
-   end if 
+   endif 
+
+   if(x==45) then
+      A1(15) = 145.0
+   endif
+   
 30 continue
    if(x>6) then
       ift = 7
@@ -72,7 +82,9 @@ subroutine tst_1(A1,x)
 
 end subroutine tst_1
 
-subroutine ifx(b_teste)
+
+subroutine ifx(  b_teste &
+              ,c_teste)
    !! ## teste
    !!
    !! Author: autor
@@ -96,22 +108,55 @@ subroutine ifx(b_teste)
    !!
 
    IMPLICIT NONE
-   !Parameters:
-   character(len=*), parameter :: procedureName = 'xxx' 
-   !! subroutine name
+   !Parameters: 
+   character(len=*), parameter :: procedureName = 'xxx'
+   !! subroutine name ------->>>>>>inicio dos erros nas linhas -> 105
+   
+   real,  parameter :: g = 9.8 
+
+   !! constante geométrica pi
 
    !Variables (input, output, inout)
-   real, intent(in) :: b_teste
+   real, intent(in) :: b_teste, c_Teste
 
-   !Local variables:
-   real :: a_Teste = 23 !teste
-
+   !Local variables: 
+   real :: a_Teste = 23
+   integer, allocatable :: x_alloc(:) !teste xml ->> 115
+   integer, allocatable :: y_alloc(:)
    character(len=20) :: nome
 
-   !Code:
-   a_Teste = 3.45
+   character(len=20) :: name_lw, NAME_UPPER, Name_first_upper
+   !namelist /TESTE/ name_lw, NAME_UPPER, Name_first_upper
+
+   !Code:  ->> 121
+   name_lw = "lower name"
+   !NAME_UPPER = "KLCLAUDIO"
+   !Name_first_upper = "Klclaudio"
+   !write(6,TESTE)
+
+   a_Teste = 3.45 
+
+   b_Teste = 3.45 + &
+             3.50
+
+   c_Teste = 5.0 &
+           + 7.0        
 
    a_teste= b_teste
    nome = "Luiz"
+   
+   
+   if (.not.allocated(x_alloc)) allocate(x_alloc)
+   
+   if (.not.allocated(y_alloc)) allocate(y_alloc)
+   
+!   if (allocated(y_alloc)) deallocate(y_alloc)
 
+   if (allocated(x_alloc)) deallocate(x_alloc)
+
+   
 end subroutine ifx
+
+module test
+   
+end module
